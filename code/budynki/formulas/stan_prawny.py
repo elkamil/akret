@@ -1,13 +1,13 @@
-from budynki.variables import y_stan_prawny_gruntu
+from budynki.variables_ak import f_sprzedal
 import re
 
-X = re.compile('Sprzedał\\s?:\\s?(.*)\\s+-.*')
+X = re.compile('Sprzedał\\s?:\\s?(.*?)(?=Kupi).*', re.DOTALL)
 
 
-def stan_prawny_gruntu(line):
+def stan_prawny(line):
     if X.search(line):
         res1 = X.search(line)
-        y_stan_prawny_gruntu.append(res1.group(1))
+        f_sprzedal.append(res1.group(1))
     else:
-        y_stan_prawny_gruntu.append('')
-    return y_stan_prawny_gruntu
+        f_sprzedal.append('-')
+    return f_sprzedal

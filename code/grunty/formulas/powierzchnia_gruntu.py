@@ -1,4 +1,4 @@
-from grunty.variables import m_powierzchnia_gruntu
+from grunty.variables_ak import r_pow
 import re
 
 CB = re.compile('.*Pow\\.\\s?:\\s?(.*)\\sha.*')
@@ -10,7 +10,7 @@ def powierzchnia_gruntu(line):
         res8prim = res8.group(1)
         res8prim2 = re.sub(r'\.', '', res8prim)
         res8prim3 = re.sub(r'^[0]+', '', res8prim2)
-        m_powierzchnia_gruntu.append(res8prim3)
+        r_pow.append(res8prim3)
     else:
-        m_powierzchnia_gruntu.append('')
-    return m_powierzchnia_gruntu
+        r_pow.append('-')
+    return r_pow

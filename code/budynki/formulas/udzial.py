@@ -1,14 +1,14 @@
 
 import re
-from budynki.variables import bx_udzial
+from budynki.variables_ak import h_udzial
 
-BX = re.compile('.*Udzia[lł]\\s?:\\s?(.*?)(?=Typ).*', re.DOTALL)
+BD = re.compile('.*Udzia[lł]\\s?:\\s?(.*?)(?=Typ).*', re.DOTALL)
 
 
 def udzial(line):
-    if BX.search(line):
-        res5 = BX.search(line)
-        bx_udzial.append(res5.group(1))
+    if BD.search(line):
+        res5 = BD.search(line)
+        h_udzial.append("- Udział: "+re.sub(r'(\||I)', '/', res5.group(1)))
     else:
-        bx_udzial.append('')
-    return bx_udzial
+        h_udzial.append('-')
+    return h_udzial

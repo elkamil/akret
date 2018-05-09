@@ -12,5 +12,5 @@ def opis(line):
             res10 = X.search(line)
             opis_dodatkowy = res10.group(1)
         else:
-            opis_dodatkowy = ''
+            opis_dodatkowy = '-'
     return opis_dodatkowy

@@ -1,6 +1,6 @@
 
 import re
-from grunty.variables import bd_udzial
+from grunty.variables_ak import h_udzial
 
 BD = re.compile('.*Udzia[lł]\\s?:\\s?(.*?)(?=Typ).*', re.DOTALL)
 
@@ -8,7 +8,7 @@ BD = re.compile('.*Udzia[lł]\\s?:\\s?(.*?)(?=Typ).*', re.DOTALL)
 def udzial(line):
     if BD.search(line):
         res5 = BD.search(line)
-        bd_udzial.append(res5.group(1))
+        h_udzial.append("- Udział: "+re.sub(r'(\||I)', '/', res5.group(1)))
     else:
-        bd_udzial.append('')
-    return bd_udzial
+        h_udzial.append('-')
+    return h_udzial

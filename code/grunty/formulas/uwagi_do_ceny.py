@@ -1,11 +1,14 @@
 import re
-Z_uwagi_do_ceny = re.compile('.*Uwagi\\s?do\\s?ceny\\s?:\\s?(.*?)(?=\\s?Nr\\s?dok).*', re.S)
+from grunty.variables_ak import t_uwagi_do_ceny
+
+re_uwagi_do_ceny = re.compile('.*Uwagi\\s?do\\s?ceny\\s?:\\s?(.*?)(?=\\s?Nr\\s?dok).*', re.S)
 
 
 def uwagi_do_ceny(line):
-    if Z_uwagi_do_ceny.search(line):
-        res11 = Z_uwagi_do_ceny.search(line)
-        uwagi_do_ceny = res11.group(1)
+
+    if re_uwagi_do_ceny.search(line):
+        res11 = re_uwagi_do_ceny.search(line)
+        t_uwagi_do_ceny.append(res11.group(1))
     else:
-        uwagi_do_ceny = ''
-    return uwagi_do_ceny
+        t_uwagi_do_ceny.append('-')
+    return t_uwagi_do_ceny

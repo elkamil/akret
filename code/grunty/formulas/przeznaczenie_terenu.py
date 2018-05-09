@@ -1,5 +1,5 @@
 import re
-from grunty.variables import q_przeznaczenie_terentu
+from grunty.variables_ak import y_przeznaczenie_terenu
 
 BZ = re.compile('Przez.*terenu\\s?:\\s?(.*?)(?=Opis)', re.DOTALL)
 
@@ -7,7 +7,7 @@ BZ = re.compile('Przez.*terenu\\s?:\\s?(.*?)(?=Opis)', re.DOTALL)
 def przeznaczenie_terenu(line):
     if BZ.search(line):
         bz = BZ.search(line)
-        q_przeznaczenie_terentu.append(bz.group(1))
+        y_przeznaczenie_terenu.append(bz.group(1))
     else:
-        q_przeznaczenie_terentu.append('')
-    return q_przeznaczenie_terentu
+        y_przeznaczenie_terenu.append('')
+    return y_przeznaczenie_terenu
