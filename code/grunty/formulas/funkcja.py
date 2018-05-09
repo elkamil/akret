@@ -8,7 +8,8 @@ B = re.compile('.*Funkcja\\s?:\\s?(.*?)(?=Pow).*', re.DOTALL)
 def funkcja(line):
     if B.search(line):
         res2 = B.search(line)
-        n_funkcja.append(res2.group(1))
+        res3 = re.sub(r'\n', '', res2.group(1))
+        n_funkcja.append(res3)
     else:
         n_funkcja.append('-')
     return n_funkcja

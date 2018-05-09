@@ -9,7 +9,7 @@ def kw(line):
         res12prim = res12.group(1)
         res12prim2 = re.sub(r',$', '', res12prim)
         correct = re.sub(r'(\||I|l)', '/', res12prim2)
-        ab_kw.append(correct)
+        ab_kw.append(re.sub(r'\n', '', correct))
     else:
         ab_kw.append('')
     return ab_kw

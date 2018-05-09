@@ -8,7 +8,8 @@ def kw(line):
         res12 = AF.search(line)
         res12prim = res12.group(1)
         res12prim2 = re.sub(r',$', '', res12prim)
-        w_kw.append(res12prim2)
+        res12prim3 = re.sub(r'\n', '', res12prim2)
+        w_kw.append(res12prim3)
     else:
         w_kw.append('')
     return w_kw

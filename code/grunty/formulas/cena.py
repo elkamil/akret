@@ -25,7 +25,7 @@ def cena(line):
 def cena_1mkw(line):
     if B.search(line):
         res6 = B.search(line)
-        res6prim = res6.group(2)
+        res6prim = re.sub(r'\n', '', res6.group(2))
         p_cena_1mkw.append(res6prim)
     else:
         p_cena_1mkw.append('-')
