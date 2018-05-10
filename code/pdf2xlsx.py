@@ -15,7 +15,6 @@ from csv_remove_blank_lines import RemoveBlankLines
 from csv2xlsx import CSV2XLSX
 from clear_tmp import clear_tmp_files
 from ocr2csv import OCR2CSV
-from sendEmail import sendemail
 
 
 def main(filename, wybor):

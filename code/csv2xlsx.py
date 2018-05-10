@@ -5,7 +5,6 @@ __email__ = "kamil.markowiak@protonmail.com"
 
 from variables import folder_tmp, csv_file, lokale_csv_file, grunty_csv_file, budynki_csv_file, static_folder
 from shutil import copyfile
-# from choose_method import choose_method
 from csv_record_separator import NumeryLiniiDoPodzialu
 import pandas as pd
 
@@ -14,7 +13,6 @@ import pandas as pd
 
 def CSV2XLSX(filename, wybor):
     numery_linii_do_podzialu = NumeryLiniiDoPodzialu()
-    # choose = choose_method(wybor)
     done_folder = static_folder + "lokale_mieszkalne/"
     backup_folder = static_folder + "backup/lokale_mieszkalne/"
 
