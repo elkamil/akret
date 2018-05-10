@@ -23,3 +23,4 @@ def RemoveBlankLines():
             if i:
                 outfile.write(i)
 
+RemoveBlankLines()

@@ -1,13 +1,13 @@
 import re
-from lokale_mieszkalne.variables import v_rodzaj_budynku
+from lokale.variables_ak import ad_rodzaj_budynku
 
-V = re.compile('Rodzaj\\s?bud\\.\\s?:\\s?(jednorodzinne|wielorodzinne|wieIorodzinne)')
+V = re.compile('Rodzaj\\s?bud\\.\\s?:\\s?(.*?)(?=Przeznaczenie\\s?tere).*', re.DOTALL)
 
 
 def rodzaj_budynku(line):
     if V.search(line):
         res7 = V.search(line)
-        v_rodzaj_budynku.append(res7.group(1))
+        ad_rodzaj_budynku.append(re.sub(r'\n', '', res7.group(1)))
     else:
-        v_rodzaj_budynku.append('')
-    return v_rodzaj_budynku
+        ad_rodzaj_budynku.append('')
+    return ad_rodzaj_budynku

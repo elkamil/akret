@@ -5,6 +5,7 @@ from lokale.formulas.numer_wpisu import numer_wpisu
 from lokale.formulas.tryb_sprzedazy import tryb_sprzedazy
 from lokale.formulas.stan_prawny import stan_prawny
 from lokale.formulas.rodzaj_osoby import rodzaj_osoby
+from lokale.formulas.rodzaj_budynku import rodzaj_budynku
 from lokale.formulas.udzial import udzial
 from lokale.formulas.powierzchnia_gruntu import powierzchnia_gruntu
 from lokale.formulas.lokalizacja import lokalizacja
@@ -59,7 +60,7 @@ def if_statements(line):
     aa_nr_zmiany = docs[1]
     ab_kw = kw(line)
     ac_uzbrojenie = uzbrojenie(line)
-    ad_przeznaczenie_terenu = ['']
+    ad_rodzaj_budynku = rodzaj_budynku(line)
     ae_przeznaczenie_terenu = przeznaczenie_terenu(line)
     af_opis_dodatkowy = opis(line)
 
@@ -70,6 +71,6 @@ def if_statements(line):
                          p_pow, q_funkcja, r_cena, s_cena_1mkw, t_cena_laczna,
                          u_powierzchnia_uzytkowa, v_cena, w_cena_1mkw, x_data,
                          y_uwagi_do_ceny, z_an, aa_nr_zmiany, ab_kw,
-                         ac_uzbrojenie, ad_przeznaczenie_terenu,
+                         ac_uzbrojenie, ad_rodzaj_budynku,
                          ae_przeznaczenie_terenu, af_opis_dodatkowy))
     return z
