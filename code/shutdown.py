@@ -1,3 +1,4 @@
+#skrypt do zatrzymywania systemu
 import os
 
 
