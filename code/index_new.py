@@ -62,68 +62,8 @@ def lokale_mieszkalne():
     return fl.render_template('lokale_mieszkalne.html', tree=make_tree(path_lokale))
 
 
-@app.route('/lokale_uslugowe', methods=['GET', 'POST'])
-def lokale_uslugowe():
-    wybor = 5
-    path_lokale = STATIC_FOLDER+'/lokale_uslugowe'
-    if request.method == 'POST':
-        file = request.files['file']
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            app.logger.info("Start procesu konwertowania dla pliku: "+filename)
-            pdf2xlsx(filename, wybor)
-            app.logger.info("Koniec procesu konwertowania dla pliku: "+filename)
-            return redirect(url_for('lokale_uslugowe'))
-    return fl.render_template('lokale_uslugowe.html', tree=make_tree(path_lokale))
 
 
-@app.route("/grunty", methods=['GET', 'POST'])
-def grunty():
-    wybor = 2
-    path_grunty = STATIC_FOLDER+'/grunty'
-    if request.method == 'POST':
-        file = request.files['file']
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            app.logger.info("Start procesu konwertowania dla pliku: " + filename)
-            pdf2xlsx(filename, wybor)
-            app.logger.info("Koniec procesu konwertowania dla pliku: " + filename)
-            return redirect(url_for('grunty'))
-    return fl.render_template('grunty.html', tree=make_tree(path_grunty))
-
-
-@app.route("/budynki", methods=['GET', 'POST'])
-def budynki():
-    wybor = 3
-    path_budynki = STATIC_FOLDER+'/budynki'
-    if request.method == 'POST':
-        file = request.files['file']
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            app.logger.info("Start procesu konwertowania dla pliku: "+filename)
-            pdf2xlsx(filename, wybor)
-            app.logger.info("Koniec procesu konwertowania dla pliku: "+filename)
-            return redirect(url_for('budynki'))
-    return fl.render_template('budynki.html', tree=make_tree(path_budynki))
-
-
-@app.route("/mp", methods=['GET', 'POST'])
-def mp():
-    wybor = 4
-    path_mp = STATIC_FOLDER+'/mp'
-    if request.method == 'POST':
-        file = request.files['file']
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            app.logger.info("Start procesu konwertowania dla pliku: "+filename)
-            pdf2xlsx(filename, wybor)
-            app.logger.info("Koniec procesu konwertowania dla pliku: "+filename)
-            return redirect(url_for('mp'))
-    return fl.render_template('mp.html', tree=make_tree(path_mp))
 
 
 @app.route("/delete", methods=['POST'])
@@ -133,20 +73,6 @@ def delete_files():
             path = static_dir+'/lokale_mieszkalne/'
             # return_template = 'lokale_mieszkalne.html'
             return_url = 'lokale_mieszkalne'
-        elif request.form['forwardBtn'] == 'lokale_uslugowe':
-            path = static_dir+'/lokale_uslugowe/'
-            # return_template = 'lokale_uslugowe.html'
-            return_url = 'lokale_uslugowe'
-        elif request.form['forwardBtn'] == 'grunty':
-            path = static_dir+'/grunty/'
-            # return_template = 'grunty.html'
-            return_url = 'grunty'
-        elif request.form['forwardBtn'] == 'budynki':
-            path = static_dir+'/budynki/'
-            return_url = 'budynki'
-        elif request.form['forwardBtn'] == 'mp':
-            path = static_dir+'/mp/'
-            return_url = 'mp'
 
     app.logger.info("Start procesu usuwania plików")
     # lst = os.listdir(STATIC_FOLDER)
@@ -163,37 +89,13 @@ def delete_files():
 @app.route('/history', methods=['GET', 'POST'])
 def history():
     path_history_lokale_m = STATIC_FOLDER+'/backup/lokale_mieszkalne'
-    path_history_lokale_u = STATIC_FOLDER+'/backup/lokale_uslugowe'
-    path_history_budynki = STATIC_FOLDER+'/backup/budynki'
-    path_history_grunty = STATIC_FOLDER+'/backup/grunty'
-    path_history_mp = STATIC_FOLDER+'/backup/mp'
 
     if request.method == 'POST':
         pass
     else:
-        return fl.render_template('historia.html', tree_h_lokale=make_tree(path_history_lokale_m)[:15],
-                                  tree_h_lokale_u=make_tree(path_history_lokale_u),
-                                  tree_h_budynki=make_tree(path_history_budynki),
-                                  tree_h_grunty=make_tree(path_history_grunty),
-                                  tree_h_mp=make_tree(path_history_mp))
-    return fl.render_template('historia.html', tree_h_lokale=make_tree(path_history_lokale_m),
-                              tree_h_lokale_u=make_tree(path_history_lokale_u),
-                              tree_h_budynki=make_tree(path_history_budynki),
-                              tree_h_grunty=make_tree(path_history_grunty),
-                              tree_h_mp=make_tree(path_history_mp))
+        return fl.render_template('historia.html', tree_h_lokale=make_tree(path_history_lokale_m)[:15])
+    return fl.render_template('historia.html', tree_h_lokale=make_tree(path_history_lokale_m))
 
-
-@app.route('/kody_pocztowe', methods=['GET', 'POST'])
-def kody_pocztowe():
-    if request.method == 'POST':
-        file = request.files['file']
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            app.logger.info("Start procesu konwertowania dla pliku: "+filename)
-            app.logger.info("Koniec procesu konwertowania dla pliku: "+filename)
-            return redirect(url_for('kody_pocztowe'))
-    return fl.render_template('kody_pocztowe.html')
 
 @app.route('/shutdown', methods=['GET', 'POST'])
 def shutdown():
