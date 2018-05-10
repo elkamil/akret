@@ -9,7 +9,7 @@ C = re.compile('(?<=Funkcja)\\s?:(.*)\\s?Funkcja', re.DOTALL)
 def qq_funkcja(line):
     if B.search(line):
         res2 = B.search(line)
-        q_funkcja_bud.append(re.sub(r'\n', '', res2.group(1)))
+        q_funkcja_bud.append(re.sub(r'^\s', '', re.sub(r'\s$', '', re.sub(r'I', '/', re.sub(r'\n', '', res2.group(1))))))
     else:
         q_funkcja_bud.append('-')
     return q_funkcja_bud
@@ -18,7 +18,7 @@ def qq_funkcja(line):
 def oo_funkcja(line):
     if C.search(line):
         res2 = C.search(line)
-        o_funkcja_gruntu.append(res2.group(1))
+        o_funkcja_gruntu.append(re.sub(r'^\s', '', re.sub(r',\s$', '', re.sub(r'I', '/', res2.group(1)))))
     else:
         o_funkcja_gruntu.append('-')
     return o_funkcja_gruntu

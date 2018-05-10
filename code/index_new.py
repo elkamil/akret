@@ -12,7 +12,6 @@ import logging
 from logging.handlers import RotatingFileHandler
 from variables import folder, static_dir
 from shutdown import shutdown as shutdown_f
-from newPostalCodes import newPostalCode
 import re
 
 def redirect_url():
@@ -192,8 +191,6 @@ def kody_pocztowe():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             app.logger.info("Start procesu konwertowania dla pliku: "+filename)
-            newPostalCode(filename)
-            # app.logger.info(print(newPostalCode(filename)))
             app.logger.info("Koniec procesu konwertowania dla pliku: "+filename)
             return redirect(url_for('kody_pocztowe'))
     return fl.render_template('kody_pocztowe.html')

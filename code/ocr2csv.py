@@ -22,6 +22,7 @@ from lokale.merge_ak import if_statements as lokale_merge
 grunty_regex = re.compile('^GRUNT$', re.MULTILINE)
 lokale_regex = re.compile('^GRUNT LOKAL$', re.MULTILINE)
 budynek_regex = re.compile('^GRUNT BUDYNEK$', re.MULTILINE)
+izby_regex = re.compile('Liczba\\s?izb', re.MULTILINE)
 
 
 def OCR2CSV(wybor):
@@ -53,12 +54,16 @@ def OCR2CSV(wybor):
                                       numery_linii_do_podzialu[i+1]-1))
                 # print(line)
                 if grunty_regex.search(line) is not None:
-                    # dopisac sekcje if dla regexp dla 3 ifow
-                    # z = if_statements(line)
-                    z = grunty_merge(line)
-                    writer_grunty = csv.writer(finito_grunty, delimiter=';',
-                                               quoting=csv.QUOTE_ALL)
-                    writer_grunty.writerows(z)
+                    if izby_regex.search(line) is not None:
+                        z = lokale_merge(line)
+                        writer_lokale = csv.writer(finito_lokale, delimiter=';',
+                                                quoting=csv.QUOTE_ALL)
+                        writer_lokale.writerows(z)
+                    else:
+                        z = grunty_merge(line)
+                        writer_grunty = csv.writer(finito_grunty, delimiter=';',
+                                                quoting=csv.QUOTE_ALL)
+                        writer_grunty.writerows(z)
                 elif budynek_regex.search(line) is not None:
                     z = budynki_merge(line)
                     writer_budynki = csv.writer(finito_budynki, delimiter=';',

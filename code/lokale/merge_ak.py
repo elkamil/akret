@@ -35,7 +35,8 @@ def if_statements(line):
     b_nr = numer_wpisu(line)
     c_ulica = dane_ulica[0]
     d_nr = dane_ulica[1]
-    e_tryb_sprzedazy = tryb_sprzedazy(line)
+    # e_tryb_sprzedazy = tryb_sprzedazy(line)
+    e_tryb_sprzedazy = dane_ulica[2]
     f_sprzedal = stan_prawny(line)
     g_typ_wlasciciela = rodzaj_osoby(line)
     h_udzial = udzial(line)
