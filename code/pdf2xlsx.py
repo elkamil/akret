@@ -15,6 +15,7 @@ from csv_remove_blank_lines import RemoveBlankLines
 from csv2xlsx import CSV2XLSX
 from clear_tmp import clear_tmp_files
 from ocr2csv import OCR2CSV
+from split_addition import pdf_splitter
 
 
 def main(filename, wybor):
@@ -22,29 +23,34 @@ def main(filename, wybor):
     print(wybor)
     ilosc_stron = Ilosc_Stron_PDF(pdf_folder+filename)
     print(time.strftime("%H:%M:%S"))
-    if ilosc_stron > 5:
-        split_pdf(pdf_folder+filename)
-        processes = []
-        filename_split = [split_pdf_1, split_pdf_2, split_pdf_3]
-        for i in range(3):
-            splited_pdf = filename_split[i]
-            processes.append(OCRPDF(folder_tmp+splited_pdf, i))
-        for p in processes:
-            p.start()
-        for p in processes:
-            p.join()
-        MergeSplittedCSV(folder_tmp+"result"+str(1)+".txt",
-                         folder_tmp+"result"+str(2)+".txt",
-                         folder_tmp+"result"+str(3)+".txt")
-    else:
-        processes = []
-        processes.append(OCRPDF(pdf_folder+filename, 0))
-        for p in processes:
-            p.start()
-        for p in processes:
-            p.join()
-        copyfile(folder_tmp+"result1.txt", folder_tmp+"result.txt")
+    folder = folder_tmp + "split_pdf/"
+    pdf_splitter(pdf_folder+filename, folder)
+    OCRPDF(folder)
 
+    #if ilosc_stron > 5:
+        # split_pdf(pdf_folder+filename)
+     #   processes = []
+     #   filename_split = [split_pdf_1, split_pdf_2, split_pdf_3]
+       # for i in range(3):
+        #    splited_pdf = filename_split[i]
+        #    processes.append(OCRPDF(folder_tmp+splited_pdf, i))
+        #for p in processes:
+        #    p.start()
+        #for p in processes:
+        #    p.join()
+        # MergeSplittedCSV(folder_tmp+"result"+str(1)+".txt",
+        #                 folder_tmp+"result"+str(2)+".txt",
+        #                 folder_tmp+"result"+str(3)+".txt")
+    #else:
+     #   processes = []
+      #  processes.append(OCRPDF(pdf_folder+filename, 0))
+       # for p in processes:
+        #    p.start()
+        #for p in processes:
+        #    p.join()
+        #copyfile(folder_tmp+"result1.txt", folder_tmp+"result.txt")
+
+    MergeSplittedCSV()
     RemoveBlankLines()
     OCR2CSV(wybor)
     xlsx_f = CSV2XLSX(filename, wybor)
@@ -55,4 +61,5 @@ def main(filename, wybor):
 
 
 if __name__ == "__main__":
-    main()
+    # main("zkk17.te.6621.1863.2018_wolny_rynek.pdf", 1)
+    main("")

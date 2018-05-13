@@ -37,4 +37,4 @@ def CSV2XLSX(filename, wybor):
     copyfile(done_folder+xlsx_file, backup_folder+xlsx_file)
     return(done_folder+xlsx_file)
 
-CSV2XLSX('wolny_rynek.xlsx', 1)
+# CSV2XLSX('wolny_rynek.xlsx', 1)
