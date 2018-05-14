@@ -8,6 +8,7 @@ re_nawias_koniec = re.compile('\)$')
 re_nawias_koniec_group = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
 re_nawias_begin_group = re.compile('([a-zA-Z]{0,4})-?(.*?)(?=\))\)[/-]?(.*)')
 re_beznawiasu = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
+re_beznawiasu_p1 = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)(.*)')
 
 
 def nr_dok(line):
@@ -31,6 +32,10 @@ def nr_dok(line):
                 wynik = re_beznawiasu.search(res9.group(1))
                 z_an.append(wynik.group(2))
                 aa_nr_zmiany.append(wynik.group(3))
+            elif re_beznawiasu_p1.search(res9.group(1)):
+                wynik = re_beznawiasu_p1.search(res9.group(1))
+                z_an.append(wynik.group(2))
+                aa_nr_zmiany.append('')
             else:
                 z_an.append('')
                 aa_nr_zmiany.append('')

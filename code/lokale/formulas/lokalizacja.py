@@ -3,7 +3,7 @@ from variables import obreby_plik
 import pandas as pd
 from lokale.variables_ak import k_obreb, l_arkusz, m_dzialka, n_liczba_izb,\
      j_dzielnica
-H = re.compile('.*Obręb\\s?:\\s?(\\d{2})(\\d{2})\\s?-\\s?([^,]+),\\s?Ark\\.:\\s?\\b(.*)(?=\\s?,\\s?Nr\\s?dz\\.)\\s?,\\s?Nr\\s?dz\\.:\\s?(.*?)(?=\\s?Liczba\\s?izb)\\s?Liczba\\s?izb\\s?:\\s?(\\d{1})\\s?(.*?)\\s?(?=(\\s?\\d+?Funkcja|\\s?Funkcja)).*', re.DOTALL)
+H = re.compile('.*Obręb\\s?:\\s?(\\d{2})(\\d{2})\\s?-\\s?([^,]+),\\s?Ark\\.:\\s?\\b(.*)(?=\\s?,\\s?Nr\\s?dz\\.)\\s?,\\s?Nr\\s?dz\\.:\\s?(.*?)(?=\\s?Liczba\\s?izb)\\s?Liczba\\s?izb\\s?:\\s?(\\d{1})?\\s?(.*?)\\s?(?=(\\s?\\d+?Funkcja|\\s?Funkcja)).*', re.DOTALL)
 
 obreby_csv = pd.read_csv(obreby_plik, sep=';', encoding='utf-8')
 
