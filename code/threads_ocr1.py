@@ -17,10 +17,10 @@ def ThreadOCR(filename, ilosc_stron, i, file_no):
     index = 0
     i = i
     ilosc_pbar = ilosc_stron
-    Input_file = folder_tmp+"split_csv/"+str(file_no)+".txt"
+    Input_file = folder_tmp+"split_csv1/"+str(file_no)+".txt"
     open(Input_file, 'w').close()
     # Input_PDF_FILE = filename
-    Input_PDF_FILE = folder_tmp + "split_pdf/" + filename
+    Input_PDF_FILE = folder_tmp + "split_pdf1/" + filename
     print("Tutaj"+Input_PDF_FILE)
     image_file = open(folder_tmp+TMP_JPEG_FILE+str(i), "wb")
     tool = pyocr.get_available_tools()[0]

@@ -6,7 +6,7 @@ __email__ = "kamil.markowiak@protonmail.com"
 from multiprocessing import Pool
 import multiprocessing
 from count_pages import Ilosc_Stron_PDF
-from threads_ocr import ThreadOCR
+from threads_ocr1 import ThreadOCR
 from variables import folder_tmp
 from split_addition import pdf_splitter
 from os import listdir
@@ -19,7 +19,8 @@ def threadStart(zz):
     # print(zz)
     g = multiprocessing.current_process()
     i = re.sub(r'\D', '', str(g))
-    folder = "/home/ee/tmp/split_pdf/"
+    print("I::::" + i)
+    folder = "/home/ee/tmp/split_pdf1/"
     pdf = PdfFileReader(folder+str(zz)+".pdf")
     ilosc_stron = pdf.getNumPages()
     ThreadOCR(str(zz)+".pdf", ilosc_stron, int(i), zz)
@@ -34,10 +35,10 @@ def OCRPDF(folder):
     only_files_len = len(onlyfiles)
     numCores = multiprocessing.cpu_count()
     # pool_number = multiprocessing.Pool(processes = numCores)
-    with Pool(numCores+1) as pool:
+    with Pool(numCores) as pool:
         pool.map(threadStart, (zz for zz in range(only_files_len)), chunksize=1)
     # print("Tutaj"+zz)
     # for zz in range(only_files_len):
         # p = Process(target=ThreadOCR, args=[filename, ilosc_stron, i+1])
 
-# OCRPDF("/home/ee/tmp/split_pdf1/")
+OCRPDF("/home/ee/tmp/split_pdf1/")
