@@ -4,7 +4,7 @@ __license__ = "GPL"
 __email__ = "kamil.markowiak@protonmail.com"
 
 import os
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, Response
 from werkzeug import secure_filename
 from pdf2xlsx import main as pdf2xlsx
 import flask as fl
@@ -13,6 +13,7 @@ from logging.handlers import RotatingFileHandler
 from variables import folder, static_dir
 from shutdown import shutdown as shutdown_f
 import re
+import time
 
 def redirect_url():
     return request.args.get('next') or \
@@ -59,6 +60,7 @@ def lokale_mieszkalne():
             pdf2xlsx(filename, wybor)
             app.logger.info("Koniec procesu konwertowania dla pliku: "+filename)
             return redirect(url_for('lokale_mieszkalne'))
+            # return fl.render_template('progress.html')
     return fl.render_template('lokale_mieszkalne.html', tree=make_tree(path_lokale))
 
 
@@ -102,6 +104,17 @@ def shutdown():
     shutdown_f()
     return fl.render_template('index.html')
 
+
+@app.route('/progress')
+def progress():
+    def generate():
+        x = 0
+        while x < 100:
+            print(x)
+            x = x + 10
+            time.sleep(0.2)
+            yield "data:" + str(x) + "\n\n"
+    return Response(generate(), mimetype= 'text/event-stream')
 
 if __name__ == "__main__":
     handler = RotatingFileHandler(folder+'/logs/ee.log', maxBytes=10000, backupCount=1)
