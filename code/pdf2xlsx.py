@@ -7,7 +7,7 @@ __email__ = "kamil.markowiak@protonmail.com"
 import time
 from shutil import copyfile
 from split_pdf_file import split_pdf
-from variables import folder_tmp, split_pdf_1, split_pdf_2, split_pdf_3, pdf_folder
+from variables import folder_tmp, folder_pdf_splits, pdf_folder
 from ocr2pdf import OCRPDF
 from count_pages import Ilosc_Stron_PDF
 from merge_csv import MergeSplittedCSV
@@ -16,16 +16,15 @@ from csv2xlsx import CSV2XLSX
 from clear_tmp import clear_tmp_files
 from ocr2csv import OCR2CSV
 from split_addition import pdf_splitter
-
+from create_structure import create_structure
 
 def main(filename, wybor):
-    print(filename)
-    print(wybor)
+    create_structure()
     ilosc_stron = Ilosc_Stron_PDF(pdf_folder+filename)
     print(time.strftime("%H:%M:%S"))
     folder = folder_tmp + "split_pdf/"
     pdf_splitter(pdf_folder+filename, folder)
-    OCRPDF(folder)
+    OCRPDF(filename,pdf_folder)
 
     #if ilosc_stron > 5:
         # split_pdf(pdf_folder+filename)

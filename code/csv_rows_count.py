@@ -10,5 +10,4 @@ def Ilosc_Wierszy():
     Output_file = folder_tmp+result_no_blank_lines
     with open(Output_file, 'r') as output:
         ilosc_el = (sum(1 for _ in output))
-        print("Ilosc linii: ", ilosc_el)
         return ilosc_el

@@ -7,13 +7,16 @@ re_nawias = re.compile('\)')
 re_nawias_koniec = re.compile('\)$')
 re_nawias_koniec_group = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
 re_nawias_begin_group = re.compile('([a-zA-Z]{0,4})-?(.*?)(?=\))\)[/-]?(.*)')
-re_beznawiasu = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
-
+re_beznawiasu = re.compile('([a-zA-Z]{0,4})-?(\\d+[-/]\\d+)[-/](.*)')
+re_beznawiasu_p1 = re.compile('([a-zA-Z]{0,4})-?(\\d+[-/]\\d+)(.*)')
+#re_beznawiasu = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
+#re_beznawiasu_p1 = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)(.*)')
 
 def nr_dok(line):
     nospace = re.sub(r'\s', '', line)
     nospace1 = re.sub(r'—', '-', nospace)
-    correct = re.sub(r'(\||I|l)', '/', nospace1)
+    correct_old = re.sub(r'(\||I|l)', '/', nospace1)
+    correct = re.sub(r'//', '/', correct_old)
     if re_wpis.search(correct):
         res9 = re_wpis.search(correct)
         if re_nawias.search(res9.group(1)):
@@ -31,6 +34,10 @@ def nr_dok(line):
                 wynik = re_beznawiasu.search(res9.group(1))
                 z_rep_a.append(wynik.group(2))
                 aa_nr_zmiany.append(wynik.group(3))
+            elif re_beznawiasu_p1.search(res9.group(1)):
+                wynik = re_beznawiasu_p1.search(res9.group(1))
+                z_rep_a.append(wynik.group(2))
+                aa_nr_zmiany.append('')
             else:
                 z_rep_a.append('')
                 aa_nr_zmiany.append('')

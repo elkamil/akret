@@ -7,8 +7,10 @@ re_nawias = re.compile('\)')
 re_nawias_koniec = re.compile('\)$')
 re_nawias_koniec_group = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
 re_nawias_begin_group = re.compile('([a-zA-Z]{0,4})-?(.*?)(?=\))\)[/-]?(.*)')
-re_beznawiasu = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
-re_beznawiasu_p1 = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)(.*)')
+re_beznawiasu = re.compile('([a-zA-Z]{0,4})-?(\\d+[-/]\\d+)[-/](.*)')
+# re_beznawiasu = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
+#re_beznawiasu_p1 = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)(.*)')
+re_beznawiasu_p1 = re.compile('([a-zA-Z]{0,4})-?(\\d+[-/]\\d+)(.*)')
 
 
 def nr_dok(line):

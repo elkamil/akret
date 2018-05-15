@@ -14,7 +14,7 @@
 	border: none;
 	font-family: inherit;
 	font-size: inherit;
-	color: #BC5888;
+	color: #457ABB;
 	/*color: inherit;*/
 	background: inherit;
 	cursor: pointer;
@@ -187,7 +187,7 @@
 	height: 0;
 	top: 50%;
 	left: 50%;
-	background: #BC5888;
+	background: #457ABB;
 	opacity: 0;
 	-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
 	-moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
@@ -250,7 +250,7 @@
 	border: 3px solid #fff;
 	color: #fff;
 	overflow: hidden;
-	background-color: #BC5888
+	background-color: #457ABB
 }
 
 .btn-9:active {
@@ -327,16 +327,16 @@
 	border: 3px solid #fff;
 	color: #fff;
 	overflow: hidden;
-	background-color: #BC5888;
+	background-color: #457ABB;
 }
 
 .btn-4:active {
-	border-color: #BC5888;
-	color: #BC5888;
+	border-color: #457ABB;
+	color: #457ABB;
 }
 
 .btn-4:hover {
-	background: #C880A3;
+	background: #5e96db;
 }
 
 .btn-4:before {
@@ -351,7 +351,7 @@
 }
 
 .btn-4:active:before {
-	color: #BC5888;
+	color: #457ABB;
 }
 
 /* Button 4a */
@@ -666,16 +666,16 @@
 	border: 3px solid #fff;
 	color: #fff;
 	overflow: hidden;
-	background-color: #BC5888
+	background-color: #457ABB
 }
 
 .btn1-10:active {
-	border-color: #BC5888;
-	color: #BC5888;
+	border-color: #457ABB;
+	color: #457ABB;
 }
 
 .btn1-10:hover {
-	background: #BC5888;
+	background: #5e96db;
 }
 
 .btn1-10:before {
@@ -690,7 +690,7 @@
 }
 
 .btn1-10:active:before {
-	color: #E80011;
+	color: #457ABB;
 }
 
 /* Button 8a */

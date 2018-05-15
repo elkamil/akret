@@ -17,4 +17,3 @@ def MergeSplittedCSV():
             with open(folder_tmp+"split_csv/"+str(i)+".txt") as infile:
                 mergedfile.write(infile.read())
             os.remove(folder_tmp+"split_csv/"+str(i)+".txt")
-MergeSplittedCSV()

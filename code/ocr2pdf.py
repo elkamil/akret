@@ -7,36 +7,35 @@ from multiprocessing import Pool
 import multiprocessing
 from count_pages import Ilosc_Stron_PDF
 from threads_ocr import ThreadOCR
-from variables import folder_tmp
+from variables import folder_tmp, folder_pdf_splits, pdf_folder
 from split_addition import pdf_splitter
 from os import listdir
 from os.path import isfile, join
 from PyPDF2 import PdfFileReader
+from clear_tmp import clear_pdf_splits, clear_csv_splits
 import re
 
 def threadStart(zz):
     i = 1
-    # print(zz)
     g = multiprocessing.current_process()
     i = re.sub(r'\D', '', str(g))
-    folder = "/home/ee/tmp/split_pdf/"
-    pdf = PdfFileReader(folder+str(zz)+".pdf")
+    pdf = PdfFileReader(folder_pdf_splits+str(zz)+".pdf")
     ilosc_stron = pdf.getNumPages()
     ThreadOCR(str(zz)+".pdf", ilosc_stron, int(i), zz)
 
 
-def OCRPDF(folder):
+def OCRPDF(filename,folder):
     i=1
+    clear_pdf_splits()
+    clear_csv_splits()
     # ilosc_stron = Ilosc_Stron_PDF(filename)
-    # pdf_splitter(filename, folder)
-    onlyfiles = [f for f in listdir(folder) if isfile(join(folder, f))]
-    # print(onlyfiles)
+    pdf_splitter(pdf_folder+filename, folder_pdf_splits)
+    onlyfiles = [f for f in listdir(folder_pdf_splits) if isfile(join(folder_pdf_splits, f))]
     only_files_len = len(onlyfiles)
     numCores = multiprocessing.cpu_count()
     # pool_number = multiprocessing.Pool(processes = numCores)
     with Pool(numCores+1) as pool:
         pool.map(threadStart, (zz for zz in range(only_files_len)), chunksize=1)
-    # print("Tutaj"+zz)
     # for zz in range(only_files_len):
         # p = Process(target=ThreadOCR, args=[filename, ilosc_stron, i+1])
 

@@ -21,7 +21,6 @@ def ThreadOCR(filename, ilosc_stron, i, file_no):
     open(Input_file, 'w').close()
     # Input_PDF_FILE = filename
     Input_PDF_FILE = folder_tmp + "split_pdf/" + filename
-    print("Tutaj"+Input_PDF_FILE)
     image_file = open(folder_tmp+TMP_JPEG_FILE+str(i), "wb")
     tool = pyocr.get_available_tools()[0]
 #    langs = tool.get_available_languages()

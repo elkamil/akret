@@ -29,9 +29,9 @@ body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
 body {
 	position: relative;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
-	color: #89867e;
+	color: #457ABB;
 	/*background: #BC5888;*/
-	background-image: url('/static/logo_ee.png') ;
+	/*background-image: url('/static/logo_ee.png') ;*/
 	background-size: 40%; 
 	background-repeat:   no-repeat;
 	background-position: center; 
@@ -50,9 +50,9 @@ a:active {
 
 .header {
   position: relative;
-  background-color: #BC5888;
+  background-color: #457ABB;
   height: 100px;
-  width: 40%;
+  width: 80%;
   border-radius: 0 40px 40px 0;
 }
 

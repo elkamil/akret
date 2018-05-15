@@ -25,4 +25,3 @@ def NumeryLiniiDoPodzialu():
     return numery_linii_do_podzialu
     test1.close()
 
-NumeryLiniiDoPodzialu()
