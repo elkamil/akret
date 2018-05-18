@@ -1,0 +1,20 @@
+<input type="button" value="tester" onclick="addImage()" />
+
+<p id="result"></p>
+
+<script>
+function callPy(data1, data2){
+	    $.ajax({
+		            type: "POST",
+			            url:"/test",
+				            data:{data1: data1, data2:data2},
+					            success:callbackFunc
+							        });
+
+	    function callbackFunc(response) {
+		        $('#result').html('<li>'+response.x+'</li>');
+	    }
+	    function addImage(){
+		        callPy(1,2);
+	    }
+</script>

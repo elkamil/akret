@@ -3,6 +3,7 @@ __copyright__ = "Copyright 2018, 4imp Kamil Markowiak"
 __license__ = "GPL"
 __email__ = "kamil.markowiak@protonmail.com"
 
+import subprocess as commands
 import os
 from flask import Flask, request, redirect, url_for, Response
 from werkzeug import secure_filename
@@ -104,20 +105,16 @@ def shutdown():
     shutdown_f()
     return fl.render_template('index.html')
 
-
-@app.route('/progress')
-def progress():
-    def generate():
-        x = 0
-        while x < 100:
-            print(x)
-            x = x + 10
-            time.sleep(0.2)
-            yield "data:" + str(x) + "\n\n"
-    return Response(generate(), mimetype= 'text/event-stream')
+@app.route('/predictions')
+def test():
+    thePercent= str(int(40))
+    print(thePercent)
+    return fl.render_template("predictions.html", thePercent=thePercent)
 
 if __name__ == "__main__":
     handler = RotatingFileHandler(folder+'/logs/ee.log', maxBytes=10000, backupCount=1)
+
+
     formatter = logging.Formatter("[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
     handler.setFormatter(formatter)
     handler.setLevel(logging.INFO)

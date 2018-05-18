@@ -1,0 +1,20 @@
+<html>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+function cputemp2() {
+	$.ajax({
+		type: "POST",
+		url: "/cputemp",
+		dataType: "html",
+		success: function(msg) {
+			console.log(msg);
+			$("#swiss").html(msg);
+		},
+		error: function (xhr, status, error) {
+			console.log(error);
+			                                                                        }
+	});
+}
+</script>
+<p>Pi CPU Temp is: {{ temp }}</p>
+</html>
