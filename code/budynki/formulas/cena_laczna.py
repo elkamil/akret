@@ -1,7 +1,7 @@
 import re
 from budynki.variables_ak import t_cena_laczna
 
-N = re.compile('.*Cena\\s?łączna\\snieruchomości\\s?:\\s?\\b([^zł]+)(?=\\s?z?ł?\\s?okre).*')
+N = re.compile('.*Cena\\s?łączna\\snieruchomości\\s?:\\s?([^zł]+)(?=\\s?z?ł?\\s?okre[sś]lono).*')
 
 
 def cena_laczna(line):

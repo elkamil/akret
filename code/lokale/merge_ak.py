@@ -10,7 +10,7 @@ from lokale.formulas.udzial import udzial
 from lokale.formulas.powierzchnia_gruntu import powierzchnia_gruntu
 from lokale.formulas.lokalizacja import lokalizacja
 from lokale.formulas.uwagi_do_ceny import uwagi_do_ceny
-from lokale.formulas.kw import kw
+from lokale.formulas.kw import kw, kw_podzial
 from lokale.formulas.uzbrojenie import uzbrojenie
 from lokale.formulas.opis import opis
 from lokale.formulas.przeznaczenie_terenu import przeznaczenie_terenu
@@ -64,6 +64,11 @@ def if_statements(line):
     ad_rodzaj_budynku = rodzaj_budynku(line)
     ae_przeznaczenie_terenu = przeznaczenie_terenu(line)
     af_opis_dodatkowy = opis(line)
+    kw_kolumny = kw_podzial(ab_kw)
+    ag_kw_gruntowa = kw_kolumny[1]
+    ah_kw_lokalu = kw_kolumny[0]
+    # for i in kolumny:
+    #     print(i[:])
 
     z = np.column_stack((a_okres, b_nr, c_ulica, d_nr, e_tryb_sprzedazy,
                          f_sprzedal, g_typ_wlasciciela, h_udzial,
@@ -72,6 +77,7 @@ def if_statements(line):
                          p_pow, q_funkcja, r_cena, s_cena_1mkw, t_cena_laczna,
                          u_powierzchnia_uzytkowa, v_cena, w_cena_1mkw, x_data,
                          y_uwagi_do_ceny, z_an, aa_nr_zmiany, ab_kw,
+                         ag_kw_gruntowa, ah_kw_lokalu,
                          ac_uzbrojenie, ad_rodzaj_budynku,
                          ae_przeznaczenie_terenu, af_opis_dodatkowy))
     return z
