@@ -34,10 +34,10 @@ af_opis_dodatkowy = ['']
 ag_kw_gruntowa = ['']
 ah_kw_lokalu = ['']
 
-header_csv = ["Okres", "Nr", "Ulica", "Nr Budynku", "Tryb sprzedaży", "Sprzedał",
+header_csv = ["Okres", "Nr", "Ulica", "Nr Lokalu", "Tryb sprzedaży", "Sprzedał",
               "Typ właściciela", "Udział", "Udział [%]", "Rodzaj nieruchomości",
               "Dzielnica", "Obręb", "Arkusz", "Działka", "Liczba izb",
-              "Funkcja Gruntu", "Pow.", "Funkcja", "Cena Gruntu", "Cena 1 m kw. Gruntu",
+              "Funkcja Gruntu", "Pow.", "Funkcja Lokalu", "Cena Gruntu", "Cena 1 m kw. Gruntu",
               "Cena łączna nieruchomości", "Pow. użytk.", "Cena Lokalu",
               "Cena 1 m kw. Lokalu", "Data", "Uwagi do ceny", "AN", "Nr zmiany",
               "KW", "KW Gruntu", "KW Lokalu", "Uzbrojenie", "Rodzaj Budynku",

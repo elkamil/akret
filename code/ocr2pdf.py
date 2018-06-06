@@ -25,7 +25,6 @@ def threadStart(zz):
 
 
 def OCRPDF(filename,folder):
-    i=1
     clear_pdf_splits()
     clear_csv_splits()
     # ilosc_stron = Ilosc_Stron_PDF(filename)

@@ -10,8 +10,9 @@ __email__ = "kamil.markowiak@protonmail.com"
 
 
 def clear_tmp_files(filename):
-    for f in files:
-        os.remove(folder_tmp+f)
+    for f in os.listdir(folder_tmp):
+        if os.path.isfile(os.path.join(folder_tmp, f)):
+            os.remove(folder_tmp+f)
 
 def clear_pdf_splits():
     for f in [f for f in listdir(folder_pdf_splits)]:

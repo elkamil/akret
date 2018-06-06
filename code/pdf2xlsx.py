@@ -54,7 +54,7 @@ def main(filename, wybor):
     OCR2CSV(wybor)
     xlsx_f = CSV2XLSX(filename, wybor)
     # sendemail(filename, xlsx_f)
-    # clear_tmp_files(filename)
+    clear_tmp_files(filename)
     print(time.strftime("%H:%M:%S"))
     return xlsx_f
 

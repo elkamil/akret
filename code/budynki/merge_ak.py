@@ -8,7 +8,7 @@ from budynki.formulas.opis import opis
 from budynki.formulas.uzbrojenie import uzbrojenie
 from budynki.formulas.przeznaczenie_terenu import przeznaczenie_terenu
 from budynki.formulas.rodzaj_budynku import rodzaj_budynku
-from budynki.formulas.kw import kw
+from budynki.formulas.kw import kw, kw_podzial
 from budynki.formulas.data import data
 from budynki.formulas.uwagi_do_ceny import uwagi_do_ceny
 from budynki.formulas.liczba_kondygnacji import liczba_kondygnacji
@@ -31,6 +31,7 @@ def if_statements(line):
     dane_ulica = ulica(line)
     docs = nr_dok(line)
     udz = udzial(line)
+
 
     a_okres = ['']
     b_nr = numer_wpisu(line)
@@ -61,6 +62,9 @@ def if_statements(line):
     z_rep_a = docs[0]
     aa_nr_zmiany = docs[1]
     ab_kw = kw(line)
+    kw_podz = kw_podzial(ab_kw)
+    ab_kw_gruntu = kw_podz[0]
+    ab_kw_budynku = kw_podz[1]
     ac_uzbrojenie = uzbrojenie(line)
     ad_przeznaczenie_terenu = przeznaczenie_terenu(line)
     ae_rodzaj_budynku = rodzaj_budynku(line)
@@ -73,6 +77,6 @@ def if_statements(line):
                          o_funkcja_gruntu, p_pow_gr, q_funkcja_bud,
                          r_cena, s_cena_1mkw, t_cena_laczna, u_pow_uzytkowa,
                          v_cena, w_cena_1mkw, x_data, y_uwagi_do_ceny,
-                         z_rep_a, aa_nr_zmiany, ab_kw, ac_uzbrojenie,
+                         z_rep_a, aa_nr_zmiany, ab_kw, ab_kw_gruntu, ab_kw_budynku, ac_uzbrojenie,
                          ad_przeznaczenie_terenu, ae_rodzaj_budynku, af_opis))
     return z
