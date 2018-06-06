@@ -33,6 +33,8 @@ def if_statements(line):
     dane_adresowe = lokalizacja(line)
     dane_ulica = ulica(line)
     docs = nr_dok(line)
+    udz = udzial(line)
+
     a_okres = ['']
     b_nr = numer_wpisu(line)
     c_ulica = dane_ulica[0]
@@ -40,7 +42,8 @@ def if_statements(line):
     e_tryb_sprzedazy = tryb_sprzedazy(line)
     f_sprzedal = stan_prawny(line)
     g_typ_wlasciciela = rodzaj_osoby(line)
-    h_udzial = udzial(line)
+    h_udzial = udz[0]
+    h1_udzial_procent = udz[1]
     i_rodzaj_nieruchomosci = "GRUNT"
     j_dzielnica = dane_adresowe[2]
     k_obreb = dane_adresowe[0]
@@ -62,7 +65,7 @@ def if_statements(line):
     aa_opis = opis(line)
 
     z = np.column_stack((a_okres, b_nr, c_ulica, d_nr, e_tryb_sprzedazy,
-                         f_sprzedal, g_typ_wlasciciela, h_udzial,
+                         f_sprzedal, g_typ_wlasciciela, h_udzial, h1_udzial_procent,
                          i_rodzaj_nieruchomosci, j_dzielnica,
                          k_obreb, l_arkusz, m_dzialka, n_funkcja,
                          o_cena, p_cena_1mkw,
