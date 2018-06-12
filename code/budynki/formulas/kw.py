@@ -31,13 +31,13 @@ def kw_podzial(kw):
             d_ksiega = re.sub(r'\s', '', druga_ksiega.group(3))
             rem_pipe = re.sub(r'l', '/', d_ksiega)
             ah_lokal = re.sub(r'\s', '', re.sub(r'l', '/', druga_ksiega.group(1)))
-            ab_kw_budynku.append(ah_lokal)
-            ab_kw_gruntu.append(rem_pipe)
+            ab_kw_budynku.append(rem_pipe)
+            ab_kw_gruntu.append(ah_lokal)
         elif (len(re.findall(',|;', kw_str)) > 1):
             d_ksiega_trzecia_search = re.compile('(.*?)(,|;)(.*?)(,|;).*(;|,)?.*')
             d_ksiega_trz = d_ksiega_trzecia_search.search(kw_str)
-            d_ksiega_trzecia = d_ksiega_trz.group(3)
-            ah_lokal = re.sub(r'\s', '', d_ksiega_trz.group(1))
+            d_ksiega_trzecia = d_ksiega_trz.group(1)
+            ah_lokal = re.sub(r'\s', '', d_ksiega_trz.group(2))
             ab_kw_budynku.append(ah_lokal)
             ab_kw_gruntu.append(re.sub(r'\s', '', d_ksiega_trzecia))
         else:

@@ -18,11 +18,10 @@ from grunty.formulas.tryb_sprzedazy import tryb_sprzedazy
 from grunty.formulas.numer_wpisu import numer_wpisu
 # from grunty.formulas.ceny import ceny
 from grunty.formulas.nr_dok import nr_dok
-from grunty.formulas.kw import kw
+from grunty.formulas.kw import kw, kw_podzial
 from grunty.formulas.opis import opis
 from grunty.formulas.uzbrojenie import uzbrojenie
 from grunty.formulas.przeznaczenie_terenu import przeznaczenie_terenu
-from grunty.formulas.ulica import ulica
 
 
 def if_statements(line):
@@ -59,19 +58,25 @@ def if_statements(line):
     u_rep_a = docs[0]
     v_nr_zmiany = docs[1]
     w_kw = kw(line)
+    kw_kolumny = kw_podzial(w_kw)
+    wa_kw_gruntowa = kw_kolumny[0]
+    wb_kw_budynku = kw_kolumny[1]
+
     x_uzbrojenie = uzbrojenie(line)
     y_przeznaczenie_terenu = przeznaczenie_terenu(line)
     z_rodzaj_bud = typ_budynku(line)
     aa_opis = opis(line)
 
     z = np.column_stack((a_okres, b_nr, c_ulica, d_nr, e_tryb_sprzedazy,
-                         f_sprzedal, g_typ_wlasciciela, h_udzial, h1_udzial_procent,
+                         f_sprzedal, g_typ_wlasciciela, h_udzial,
+                         h1_udzial_procent,
                          i_rodzaj_nieruchomosci, j_dzielnica,
                          k_obreb, l_arkusz, m_dzialka, n_funkcja,
                          o_cena, p_cena_1mkw,
                          q_cena_laczna, r_pow, s_data,
                          t_uwagi_do_ceny, u_rep_a,
-                         v_nr_zmiany, w_kw, x_uzbrojenie,
+                         v_nr_zmiany, w_kw, wa_kw_gruntowa,
+                         wb_kw_budynku, x_uzbrojenie,
                          y_przeznaczenie_terenu,
                          z_rodzaj_bud, aa_opis))
 

@@ -67,8 +67,8 @@ def if_statements(line):
     ae_przeznaczenie_terenu = przeznaczenie_terenu(line)
     af_opis_dodatkowy = opis(line)
     kw_kolumny = kw_podzial(ab_kw)
-    ag_kw_gruntowa = kw_kolumny[1]
-    ah_kw_lokalu = kw_kolumny[0]
+    ag_kw_gruntowa = kw_kolumny[0]
+    ah_kw_lokalu = kw_kolumny[1]
     # for i in kolumny:
     #     print(i[:])
 

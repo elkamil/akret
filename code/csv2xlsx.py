@@ -30,13 +30,11 @@ def CSV2XLSX(filename, wybor):
     read_lokale.to_excel(writer, sheet_name="Lokale", index=False)
     read_grunty.to_excel(writer, sheet_name="Działki", index=False)
     read_budynki.to_excel(writer, sheet_name="Domy", index=False)
-    read_pdf.to_excel(writer, sheet_name="PDF", index=False)
     workbook = writer.book
     worksheet = writer.sheets["Lokale"]
     worksheet = writer.sheets["Działki"]
     worksheet = writer.sheets["Domy"]
     # worksheet = writer.sheets["PDF"]
-    worksheet = writer.sheets["PDF"]
     # ws = workbook.worksheet["PDF"].Item(1)
     # objs = ws.OLEObjects()
     # format1 = workbook.add_format({'num_format': '#,##0.00'})
