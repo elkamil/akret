@@ -33,7 +33,7 @@ def sendemail(filename, xlsx_file):
 
     # Create the enclosing (outer) message
     outer = MIMEMultipart()
-    outer['Subject'] = 'Konwersa pliku: '+filename
+    outer['Subject'] = 'Konwersja pliku: '+filename
     outer['To'] = COMMASPACE.join(recipients)
     outer['From'] = sender
     outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
