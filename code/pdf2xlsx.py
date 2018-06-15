@@ -17,6 +17,7 @@ from clear_tmp import clear_tmp_files
 from ocr2csv import OCR2CSV
 from split_addition import pdf_splitter
 from create_structure import create_structure
+from sendEmail import sendemail
 
 def main(filename, wybor):
     create_structure()
@@ -53,7 +54,7 @@ def main(filename, wybor):
     RemoveBlankLines()
     OCR2CSV(wybor)
     xlsx_f = CSV2XLSX(filename, wybor)
-    # sendemail(filename, xlsx_f)
+    sendemail(filename, xlsx_f)
     clear_tmp_files(filename)
     print(time.strftime("%H:%M:%S"))
     return xlsx_f

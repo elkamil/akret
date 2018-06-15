@@ -9,6 +9,8 @@
 <div class="header">
 <h1> <center><font size="14" color="white">Konwersja PDF2Excel</font></center></h1>
 </div>
+<div id="loadingDiv" style="display:none;"><img src="{{ url_for('static', filename='spinner.gif')}}" alt="" /></div>
+</div>
 
 <div style="float:left; width:50%;">
 <form action="" method=post enctype=multipart/form-data>
@@ -17,15 +19,12 @@
 <p>	<input class="btn btn-4 btn-4c icon-arrow-right" type=submit  onclick="$('#loadingDiv').show();" value="Konwertuj na XLSX"></p>
 </form>
 <!--section class="color-4"-->
-<!--div id="loading" style="display:none;"><img src="{{ url_for('static', filename='loading.gif')}}" alt="" />Loading!</div-->
+<!--div id="loading" style="display:none;"><img src="{{ url_for('static', filename='spinner.gif')}}" alt="" />Loading!</div-->
 <form action="/delete" method="post">
 <p>	<button class="btn btn-4 btn-4c icon-arrow-right" name="forwardBtn" onclick="delete_files()" value="lokale_mieszkalne"> Usuń Pliki</button></p>
 </form>
 <p><a class="btn btn-4 btn-4d icon-arrow-left" href="{{ url_for('index') }}">WRÓĆ</a></p>
 <div class="verticalLine"></div>
-</div>
-<div style="float:center; width:100%;">
-<div id="loadingDiv" style="display:none;"><img src="{{ url_for('static', filename='loading.gif')}}" alt="" /></div>
 </div>
 <div style="float:right; width:50%;">
 	<!--section class="color-9"-->
