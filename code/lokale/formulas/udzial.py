@@ -13,10 +13,15 @@ def udzial(line):
         h_udzial.append("- Udział: "+re.sub(r'(\||I)', '/', res6))
         if (len(re.findall('/', res6)) == 1):
             ul = ulamek.search(re.sub(r'\s','',res6))
-            licznik = float(re.sub(r'\s', '', ul.group(1)))
-            mianownik = float(re.sub(r'\s', '', ul.group(2)))
-            wynik = round((licznik/mianownik)*100,5)
-            h1_udzial_procent.append(wynik)
+            try:
+                licznik = float(re.sub(r'\s', '', ul.group(1)))
+                mianownik = float(re.sub(r'\s', '', ul.group(2)))
+                wynik = round((licznik/mianownik)*100,5)
+                h1_udzial_procent.append(wynik)
+            except ValueError:
+                h1_udzial_procent.append('')
+            except ZeroDivisionError:
+                h1_udzial_procent.append('')
         elif (len(re.findall('%', res6)) == 1):
             h1_udzial_procent.append(re.sub(r'%','',res6))
         else:
