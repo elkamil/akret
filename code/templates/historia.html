@@ -11,6 +11,10 @@
 
 <div style="float:left;width:50%; position:relative;">
 <p><a class="btn btn-4 btn-4d icon-arrow-left" href="{{ url_for('index') }}">WRÓĆ</a></p>
+<form action="/delete_history" method="post">
+	<p>     <button class="btn btn-4 btn-4c icon-arrow-right" name="forwardBtn" onclick="delete_history_files()" value="delete_history"> Usuń Pliki</button></p>
+</form>
+
 </div>
 
 <body>

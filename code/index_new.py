@@ -88,6 +88,24 @@ def delete_files():
     return redirect(url_for(return_url))
     # return fl.render_template(return_template, tree=make_tree(path))
 
+@app.route("/delete_history", methods=['POST'])
+def delete_history_files():
+    if request.method == 'POST':
+        if request.form['forwardBtn'] == 'delete_history':
+            path = static_dir+'/backup/lokale_mieszkalne/'
+            # return_template = 'lokale_mieszkalne.html'
+            return_url = 'history'
+
+    app.logger.info("Start procesu usuwania plików")
+    # lst = os.listdir(STATIC_FOLDER)
+    # lst = os.listdir('/home/ee/ee_convert/code/static/')
+    lst = os.listdir(path)
+    for f in lst:
+        file_path = os.path.join(path, f)
+        os.remove(file_path)
+    app.logger.info("Koniec procesu usuwania plików")
+    return redirect(url_for(return_url))
+    # return fl.render_template(return_template, tree=make_tree(path))
 
 @app.route('/history', methods=['GET', 'POST'])
 def history():
