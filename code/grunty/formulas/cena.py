@@ -9,7 +9,7 @@ def cena(line):
 
     if G.search(line):
         res6 = G.search(line)
-        result = re.sub(r'\.', ',', re.sub(r'[^\d\.]', '', res6.group(1)))
+        result = re.sub(r'[^\d\.]', '', res6.group(1))
         if number.search(result):
             o_cena.append(result)
         else:
@@ -28,7 +28,7 @@ def cena(line):
 def cena_1mkw(line):
     if B.search(line):
         res6 = B.search(line)
-        result = re.sub(r'\.', ',', re.sub(r'[^\d\.]', '', res6.group(2)))
+        result = re.sub(r'[^\d\.]', '', res6.group(2))
         if number.search(result):
             p_cena_1mkw.append(result)
         else:

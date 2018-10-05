@@ -31,12 +31,20 @@ def CSV2XLSX(filename, wybor):
     read_grunty.to_excel(writer, sheet_name="Działki", index=False)
     read_budynki.to_excel(writer, sheet_name="Domy", index=False)
     workbook = writer.book
-    worksheet = writer.sheets["Lokale"]
-    worksheet = writer.sheets["Działki"]
-    worksheet = writer.sheets["Domy"]
-    # worksheet = writer.sheets["PDF"]
-    # ws = workbook.worksheet["PDF"].Item(1)
-    # objs = ws.OLEObjects()
+    number_format = workbook.add_format({'num_format': '#,##0.00'})
+    worksheet_lokale = writer.sheets["Lokale"]
+    worksheet_grunty = writer.sheets["Działki"]
+    worksheet_budynki = writer.sheets["Domy"]
+    worksheet_lokale.set_column('W:W', None, number_format)
+    worksheet_lokale.set_column('X:X', None, number_format)
+    worksheet_lokale.set_column('T:T', None, number_format)
+    worksheet_lokale.set_column('S:S', None, number_format)
+    worksheet_grunty.set_column('P:P', None, number_format)
+    worksheet_grunty.set_column('Q:Q', None, number_format)
+    worksheet_budynki.set_column('S:S', None, number_format)
+    worksheet_budynki.set_column('T:T', None, number_format)
+    worksheet_budynki.set_column('W:W', None, number_format)
+    worksheet_budynki.set_column('X:X', None, number_format)
     # format1 = workbook.add_format({'num_format': '#,##0.00'})
     # worksheet.set_column('M:M', 18, format1)
 
