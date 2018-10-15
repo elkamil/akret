@@ -17,7 +17,7 @@ import smtplib
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
-from variables import email_from, email_to, folder_tmp, pdf_folder, email_from_pass, line_numbers, result_no_blank_lines, result_no_page_numbers, wpisy
+from variables import email_from, email_to, folder_tmp, pdf_folder, email_from_pass,  result_no_blank_lines, result_no_page_numbers, wpisy
 email_from='rciwnwro@gmail.com'
 email_to='rciwnwro@gmail.com'
 email_from_pass='y!mhsubx'
@@ -41,8 +41,7 @@ def sendbeforeemail(filename):
     # List of attachments
     attachments = [folder_tmp+result_no_blank_lines, pdf_folder+filename,
                    folder_tmp+result_no_page_numbers,
-                   folder_tmp+line_numbers,
-                   folder_tmp+wpisy, folder_tmp+"result.txt"]
+                   folder_tmp+"result.txt"]
 
     # Add the attachments to
     # the message

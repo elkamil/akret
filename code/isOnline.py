@@ -1,5 +1,5 @@
 import os
-hostname = "8.8.8.8"
+hostname = "onet.pl"
 
 
 def isOnline():
