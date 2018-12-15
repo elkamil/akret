@@ -14,6 +14,8 @@ def powierzchnia_uzytkowa(line):
         u_powierzchnia_uzytkowa.append('')
 
     if u_powierzchnia_uzytkowa[0]:
+        u_powierzchnia_uzytkowa[:] = [s.replace(' ', '') for s in u_powierzchnia_uzytkowa]
+        print(u_powierzchnia_uzytkowa)
         u_powierzchnia_uzytkowa_2f = ['%.2f' % elem for elem in [float(i) for i in u_powierzchnia_uzytkowa]]
     else:
         u_powierzchnia_uzytkowa_2f = ['']
