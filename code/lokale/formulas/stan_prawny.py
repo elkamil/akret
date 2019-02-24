@@ -1,7 +1,7 @@
 from lokale.variables_ak import f_sprzedal
 import re
 
-X = re.compile('Sprzedał\\s?:\\s?(.*?)(?=Kupi).*', re.DOTALL)
+X = re.compile('Sprzedał\\s?:\\s?(.*)', re.MULTILINE)
 
 
 def stan_prawny(line):

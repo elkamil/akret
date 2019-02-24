@@ -1,7 +1,7 @@
 from grunty.variables_ak import c_ulica, d_nr
 import re
 
-re_ulica = re.compile('\\d+\\.\\s(.*?)(?=,),\\s?(.*?)(?=\\s?\\()(.*)')
+re_ulica = re.compile('\\d+\\s?\\.\\s(.*?)(?=,),\\s?(.*?)(?=\\s?\\()(.*)')
 re_numer_na_poczatku = re.compile('^\\d')
 re_numer_na_poczatku_group = re.compile('(\\d+.*?)((?=\d|$))(.*)')
 re_bez_numeru = re.compile('\\d', re.DOTALL)
@@ -9,7 +9,7 @@ re_bez_numeru = re.compile('\\d', re.DOTALL)
 re_normalny = re.compile('(.*?)(?=(\\s?\\d|\\s?m\\.))(.*)')
 re_nawias = re.compile('\(')
 
-re_ulica_no_nawias = re.compile('\\d+\\.\\s(.*?)(?=,),\\s?(.*?)(?=$)')
+re_ulica_no_nawias = re.compile('\\d+\\s?\\.\\s(.*?)(?=,),\\s?(.*?)(?=$)')
 re_no_naw = re.compile('(.*?)(?=\\s?\\d)\\s?(.*)')
 
 def ulica(line):
