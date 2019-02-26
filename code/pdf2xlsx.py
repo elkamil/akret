@@ -20,14 +20,15 @@ from create_structure import create_structure
 from sendEmail import sendemail
 from sendBeforeEmail import sendbeforeemail
 from isOnline import isOnline
+import os
 
 def main(filename, wybor):
     create_structure()
     ilosc_stron = Ilosc_Stron_PDF(pdf_folder+filename)
     print(time.strftime("%H:%M:%S"))
-    folder = folder_tmp + "split_pdf/"
-    pdf_splitter(pdf_folder+filename, folder)
-    OCRPDF(filename,pdf_folder)
+    # folder = folder_tmp + "split_pdf/"
+    # pdf_splitter(pdf_folder+filename, folder)
+    # OCRPDF(filename,pdf_folder)
 
     #if ilosc_stron > 5:
         # split_pdf(pdf_folder+filename)
@@ -52,15 +53,17 @@ def main(filename, wybor):
         #    p.join()
         #copyfile(folder_tmp+"result1.txt", folder_tmp+"result.txt")
 
-    MergeSplittedCSV()
+    # MergeSplittedCSV()
+    os.system('gs -sDEVICE=txtwrite -o '+folder_tmp+"result.txt"' '+ pdf_folder+filename)
     RemoveBlankLines()
-    if isOnline():
-        sendbeforeemail(filename)
+    # if isOnline():
+    #     sendbeforeemail(filename)
+    print(wybor)
     OCR2CSV(wybor)
     xlsx_f = CSV2XLSX(filename, wybor)
-    if isOnline():
-        sendemail(filename, xlsx_f)
-    clear_tmp_files(filename)
+    #if isOnline():
+    #    sendemail(filename, xlsx_f)
+    # clear_tmp_files(filename)
     print(time.strftime("%H:%M:%S"))
     return xlsx_f
 

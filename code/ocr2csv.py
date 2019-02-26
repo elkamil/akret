@@ -19,9 +19,9 @@ from budynki.variables_ak import header_csv as budynki_header
 from budynki.merge_ak import if_statements as budynki_merge
 from lokale.variables_ak import header_csv as lokale_header
 from lokale.merge_ak import if_statements as lokale_merge
-grunty_regex = re.compile('^GRUNT$', re.MULTILINE)
-lokale_regex = re.compile('^GRUNT LOKAL$', re.MULTILINE)
-budynek_regex = re.compile('^GRUNT BUDYNEK$', re.MULTILINE)
+grunty_regex = re.compile('^GRUNT\s?$', re.MULTILINE)
+lokale_regex = re.compile('^GRUNT\s+LOKAL$', re.MULTILINE)
+budynek_regex = re.compile('^GRUNT\s+BUDYNEK$', re.MULTILINE)
 izby_regex = re.compile('Liczba\\s?izb', re.MULTILINE)
 
 
@@ -52,6 +52,7 @@ def OCR2CSV(wybor):
             if i+1 < len(numery_linii_do_podzialu):
                 line = ''.join(islice(dane3, numery_linii_do_podzialu[i]-1,
                                       numery_linii_do_podzialu[i+1]-1))
+                line = re.sub('  ', ' ', line)
                 # print(line)
                 if grunty_regex.search(line) is not None:
                     if izby_regex.search(line) is not None:
