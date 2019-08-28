@@ -14,9 +14,9 @@ def NumeryLiniiDoPodzialu():
     # licznik = re.compile('^[0-9]+\s?\.\s?[Ww]')
     # licznik = re.compile('^([0-9]+\s?\.|[0-9]+\s?[0-9]+\s?\.)\s?[Ww]')
     licznik = re.compile('^(([0-9]+\s?\.|[0-9]+\s?[0-9]+\s?\.)\s?[Ww]|([0-9]+\s?\.|[0-9]+\s?[0-9]+\s?\.).*\()')
-    with open(output_file, 'r') as plik:
+    with open(output_file, 'r',encoding="utf8") as plik:
             numery_linii_do_podzialu = []
-            with open(folder_tmp+line_numbers, 'w') as output:
+            with open(folder_tmp+line_numbers, 'w',encoding="utf8") as output:
                     for line_i, line in enumerate(plik, 1):
                         if licznik.search(line):
                             output.write("%d\n" % line_i)

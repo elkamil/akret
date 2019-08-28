@@ -35,9 +35,9 @@ def OCR2CSV(wybor):
     # if_statements = choose[1]
 
     i = 0
-    finito_grunty = open(folder_tmp+grunty_csv_file, 'w', newline='')
-    finito_lokale = open(folder_tmp+lokale_csv_file, 'w', newline='')
-    finito_budynki = open(folder_tmp+budynki_csv_file, 'w', newline='')
+    finito_grunty = open(folder_tmp+grunty_csv_file, 'w', newline='',encoding="utf8")
+    finito_lokale = open(folder_tmp+lokale_csv_file, 'w', newline='',encoding="utf8")
+    finito_budynki = open(folder_tmp+budynki_csv_file, 'w', newline='',encoding="utf8")
     writer_grunty = csv.DictWriter(finito_grunty, fieldnames=grunty_header,
                                    delimiter=';', quoting=csv.QUOTE_ALL)
     writer_grunty.writeheader()
@@ -48,7 +48,7 @@ def OCR2CSV(wybor):
                                    delimiter=';', quoting=csv.QUOTE_ALL)
     writer_lokale.writeheader()
     while i < len(numery_linii_do_podzialu):
-        with open(folder_tmp+result_no_blank_lines, 'r') as dane3:
+        with open(folder_tmp+result_no_blank_lines, 'r',encoding="utf8") as dane3:
             if i+1 < len(numery_linii_do_podzialu):
                 line = ''.join(islice(dane3, numery_linii_do_podzialu[i]-1,
                                       numery_linii_do_podzialu[i+1]-1))

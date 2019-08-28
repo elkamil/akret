@@ -28,7 +28,7 @@ STATIC_FOLDER = static_dir
 ALLOWED_EXTENSIONS = set(['pdf', 'csv'])
 
 
-app = Flask(__name__, template_folder="/home/ee/code/templates", static_folder=static_dir)
+app = Flask(__name__, template_folder="templates", static_folder=static_dir)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
