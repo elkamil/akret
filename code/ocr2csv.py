@@ -104,4 +104,4 @@ def OCR2CSV(wybor):
     # CSV2XLSX('budy', wybor)
 
 
-# OCR2CSV(1)
+#OCR2CSV(1)

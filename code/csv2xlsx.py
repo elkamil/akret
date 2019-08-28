@@ -56,4 +56,4 @@ def CSV2XLSX(filename, wybor):
     # objs.Add(Filename=add_pdf, iconlabel = "Test").Name = 'Test'
     return(done_folder+xlsx_file)
 
-# CSV2XLSX('wolny_rynek.xlsx', 1)
+#CSV2XLSX('wolny_rynek.xlsx', 1)
