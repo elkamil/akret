@@ -1,4 +1,5 @@
 import re
+
 from budynki.variables_ak import ad_przeznaczenie_terenu
 
 BZ = re.compile('Przez.*terenu\\s?:\\s?(.*?)(?=Opis)', re.DOTALL)

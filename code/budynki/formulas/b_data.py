@@ -1,4 +1,5 @@
 import re
+
 from budynki.variables import b_data_transakcji
 
 # B = re.compile('.*określono\s?[wW]\s?dniu\s?(.*)')
@@ -13,7 +14,7 @@ def b_data(line):
         data_conv = re.compile('(\\d{2})\\.(\\d{2})\\.(\\d{4})')
         # data_conv = re.compile('(\d{2})\.(\d{2})\.(\d{4})')
         d_res = data_conv.search(data_without_spaces)
-        d_res_final = d_res.group(3)+'-'+d_res.group(2)+'-'+d_res.group(1)
+        d_res_final = d_res.group(3) + '-' + d_res.group(2) + '-' + d_res.group(1)
         b_data_transakcji.append(d_res_final)
     else:
         b_data_transakcji.append('')

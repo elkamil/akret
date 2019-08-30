@@ -1,4 +1,5 @@
 import re
+
 from budynki.variables_ak import n_liczba_kondygnacji
 
 AK = re.compile('.*Liczba\\s?kondygn\\.\\s?:\\s?(\\d+)')

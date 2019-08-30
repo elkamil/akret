@@ -1,5 +1,6 @@
-from lokale.variables_ak import p_pow
 import re
+
+from lokale.variables_ak import p_pow
 
 CB = re.compile('.*Pow\\.\\s?:\\s?(.*)\\sha.*')
 

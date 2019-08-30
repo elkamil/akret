@@ -12,15 +12,18 @@ NOTE: replace values in ALL CAPS with your own values
 """
 
 import os
-import sys
 import smtplib
+import sys
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
-from variables import email_from, email_to, folder_tmp, pdf_folder, email_from_pass,  result_no_blank_lines, result_no_page_numbers, wpisy
-email_from='rciwnwro@gmail.com'
-email_to='rciwnwro@gmail.com'
-email_from_pass='y!mhsubx'
+
+from variables import email_from, email_to, folder_tmp, pdf_folder, email_from_pass, result_no_blank_lines, \
+    result_no_page_numbers
+
+email_from = 'rciwnwro@gmail.com'
+email_to = 'rciwnwro@gmail.com'
+email_from_pass = 'y!mhsubx'
 # from csv2xlsx import xlsx_file, done_folder
 
 COMMASPACE = ', '
@@ -33,15 +36,15 @@ def sendbeforeemail(filename):
 
     # Create the enclosing (outer) message
     outer = MIMEMultipart()
-    outer['Subject'] = 'Konwersja pliku: '+filename
+    outer['Subject'] = 'Konwersja pliku: ' + filename
     outer['To'] = COMMASPACE.join(recipients)
     outer['From'] = sender
     outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
 
     # List of attachments
-    attachments = [folder_tmp+result_no_blank_lines, pdf_folder+filename,
-                   folder_tmp+result_no_page_numbers,
-                   folder_tmp+"result.txt"]
+    attachments = [folder_tmp + result_no_blank_lines, pdf_folder + filename,
+                   folder_tmp + result_no_page_numbers,
+                   folder_tmp + "result.txt"]
 
     # Add the attachments to
     # the message
@@ -72,4 +75,3 @@ def sendbeforeemail(filename):
     except:
         print("Unable to send the email. Error: ", sys.exc_info()[0])
         raise
-

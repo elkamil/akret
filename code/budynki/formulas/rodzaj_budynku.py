@@ -1,4 +1,5 @@
 import re
+
 from budynki.variables_ak import ae_rodzaj_budynku
 
 # V = re.compile('Rodzaj\\s?bud\\.\\s?:\\s?(jednorodzinne|wielorodzinne|wieIorodzinne)')

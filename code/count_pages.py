@@ -1,4 +1,5 @@
 from PyPDF2 import PdfFileReader
+
 __author__ = "Kamil Markowiak"
 __copyright__ = "Copyright 2018, 4imp Kamil Markowiak"
 __license__ = "GPL"

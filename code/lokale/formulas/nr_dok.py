@@ -1,4 +1,5 @@
 import re
+
 from lokale.variables_ak import z_an, aa_nr_zmiany
 
 AH = re.compile('.*Nr\\s?dok\\.\\s?:\\s?([a-zA-Z]{0,4})-?\\s?(\\d+/\\d+)[-/](.*?)(?=,)')
@@ -6,11 +7,11 @@ re_wpis = re.compile('.*Nr\s?dok\.:(.*?)(?=\s?,\s?KW).*')
 re_nawias = re.compile('\)')
 re_nawias_koniec = re.compile('\)$')
 re_nawias_koniec_group = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)(.*)')
-#re_nawias_koniec_group = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
+# re_nawias_koniec_group = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
 re_nawias_begin_group = re.compile('([a-zA-Z]{0,4})-?(.*?)(?=\))\)[/-]?(.*)')
 re_beznawiasu = re.compile('([a-zA-Z]{0,4})-?(\\d+[-/]\\d+)[-/](.*)')
 # re_beznawiasu = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)[-/](.*)')
-#re_beznawiasu_p1 = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)(.*)')
+# re_beznawiasu_p1 = re.compile('([a-zA-Z]{0,4})-?(\\d+/\\d+)(.*)')
 re_beznawiasu_p1 = re.compile('([a-zA-Z]{0,4})-?(\\d+[-/]\\d+)(.*)')
 
 
@@ -44,9 +45,9 @@ def nr_dok(line):
                 aa_nr_zmiany.append('')
 
     # if AH.search(correct):
-       # res9 = AH.search(correct)
-        # z_an.append(res9.group(2))
-        # aa_nr_zmiany.append(res9.group(3))
+    # res9 = AH.search(correct)
+    # z_an.append(res9.group(2))
+    # aa_nr_zmiany.append(res9.group(3))
     else:
         z_an.append('')
         aa_nr_zmiany.append('')

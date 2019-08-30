@@ -1,4 +1,5 @@
 import re
+
 from budynki.variables_ak import o_funkcja_gruntu, q_funkcja_bud
 
 # B = re.compile('.*określono\s?[wW]\s?dniu\s?(.*)')
@@ -9,7 +10,8 @@ C = re.compile('(?<=Funkcja)\\s?:(.*)\\s?Funkcja', re.DOTALL)
 def qq_funkcja(line):
     if B.search(line):
         res2 = B.search(line)
-        q_funkcja_bud.append(re.sub(r'^\s', '', re.sub(r'\s$', '', re.sub(r'I', '/', re.sub(r'\n', '', res2.group(1))))))
+        q_funkcja_bud.append(
+            re.sub(r'^\s', '', re.sub(r'\s$', '', re.sub(r'I', '/', re.sub(r'\n', '', res2.group(1))))))
     else:
         q_funkcja_bud.append('-')
     return q_funkcja_bud

@@ -1,4 +1,5 @@
 import os
+
 from variables import folder_pdf_splits, folder_csv_splits
 
 

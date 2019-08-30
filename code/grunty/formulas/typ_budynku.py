@@ -1,4 +1,5 @@
 import re
+
 from grunty.variables_ak import z_rodzaj_bud
 
 # V = re.compile('Rodzaj\\s?bud\\.\\s?:\\s?(jednorodzinne|wielorodzinne|wieIorodzinne)')

@@ -1,4 +1,5 @@
 import re
+
 from lokale.variables_ak import r_cena, v_cena, w_cena_1mkw, s_cena_1mkw
 
 # B = re.compile('.*określono\s?[wW]\s?dniu\s?(.*)')

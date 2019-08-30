@@ -1,26 +1,25 @@
 import numpy as np
-from lokale.variables_ak import *
 
-from lokale.formulas.numer_wpisu import numer_wpisu
-from lokale.formulas.tryb_sprzedazy import tryb_sprzedazy
-from lokale.formulas.stan_prawny import stan_prawny
-from lokale.formulas.rodzaj_osoby import rodzaj_osoby
-from lokale.formulas.rodzaj_budynku import rodzaj_budynku
-from lokale.formulas.udzial import udzial
-from lokale.formulas.powierzchnia_gruntu import powierzchnia_gruntu
-from lokale.formulas.lokalizacja import lokalizacja
-from lokale.formulas.uwagi_do_ceny import uwagi_do_ceny
-from lokale.formulas.kw import kw, kw_podzial
-from lokale.formulas.uzbrojenie import uzbrojenie
-from lokale.formulas.opis import opis
-from lokale.formulas.przeznaczenie_terenu import przeznaczenie_terenu
-from lokale.formulas.data import data
-from lokale.formulas.ulica import ulica
-from lokale.formulas.nr_dok import nr_dok
-from lokale.formulas.funkcja import oo_funkcja, qq_funkcja
 from lokale.formulas.cena import vv_cena, rr_cena, ww_cena_1mkw, ss_cena_1mkw
 from lokale.formulas.cena_laczna import cena_laczna
+from lokale.formulas.data import data
+from lokale.formulas.funkcja import oo_funkcja, qq_funkcja
+from lokale.formulas.kw import kw, kw_podzial
+from lokale.formulas.lokalizacja import lokalizacja
+from lokale.formulas.nr_dok import nr_dok
+from lokale.formulas.numer_wpisu import numer_wpisu
+from lokale.formulas.opis import opis
+from lokale.formulas.powierzchnia_gruntu import powierzchnia_gruntu
 from lokale.formulas.powierzchnia_uzytkowa import powierzchnia_uzytkowa
+from lokale.formulas.przeznaczenie_terenu import przeznaczenie_terenu
+from lokale.formulas.rodzaj_budynku import rodzaj_budynku
+from lokale.formulas.rodzaj_osoby import rodzaj_osoby
+from lokale.formulas.stan_prawny import stan_prawny
+from lokale.formulas.udzial import udzial
+from lokale.formulas.ulica import ulica
+from lokale.formulas.uwagi_do_ceny import uwagi_do_ceny
+from lokale.formulas.uzbrojenie import uzbrojenie
+from lokale.variables_ak import *
 
 
 def if_statements(line):

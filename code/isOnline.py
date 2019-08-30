@@ -1,4 +1,5 @@
 import os
+
 hostname = "onet.pl"
 
 

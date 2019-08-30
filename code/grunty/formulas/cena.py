@@ -1,12 +1,13 @@
 import re
+
 from grunty.variables_ak import o_cena, p_cena_1mkw
 
 G = re.compile('(?<=Cena:)\\s?(.*)\\s?z\\s?[lł]\\s?')
 B = re.compile('.*Cena\\s?1(.*):\\s?(.*?)(?=Cena\\s?ł).*', re.DOTALL)
 number = re.compile('\d')
 
-def cena(line):
 
+def cena(line):
     if G.search(line):
         res6 = G.search(line)
         result = re.sub(r'[^\d\.]', '', res6.group(1))
@@ -24,6 +25,7 @@ def cena(line):
 
     # return o_cena_2f
     return o_cena
+
 
 def cena_1mkw(line):
     if B.search(line):

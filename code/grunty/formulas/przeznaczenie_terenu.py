@@ -1,4 +1,5 @@
 import re
+
 from grunty.variables_ak import y_przeznaczenie_terenu
 
 BZ = re.compile('Przez.*terenu\\s?:\\s?(.*?)(?=Opis)', re.DOTALL)

@@ -1,5 +1,6 @@
-from grunty.variables_ak import r_pow
 import re
+
+from grunty.variables_ak import r_pow
 
 CB = re.compile('.*Pow\\.\\s?:\\s?(.*)\\sha.*')
 

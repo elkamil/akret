@@ -1,4 +1,5 @@
 import re
+
 Z = re.compile('.*Opis\\s?dodatkowy\\s?:\\s?(.*?)(?=Zlecenie\\s?nr).*', re.DOTALL)
 X = re.compile('.*Opis\\s?dodatkowy\\s?:\\s?(.*)', re.DOTALL)
 

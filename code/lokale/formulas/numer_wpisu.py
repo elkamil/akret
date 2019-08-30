@@ -1,4 +1,5 @@
 import re
+
 from lokale.variables_ak import b_nr
 
 # AH = re.compile('.*Nr\\s?dok\\.\\s?:\\s?([a-zA-Z]+)-?\\s?(\\d+/\\d+).*')

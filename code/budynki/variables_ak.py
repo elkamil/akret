@@ -34,7 +34,6 @@ ad_przeznaczenie_terenu = ['']
 ae_rodzaj_budynku = ['']
 af_opis = ['']
 
-
 header_csv = ["Okres", "Nr", "Ulica", "Nr Budynku", "Tryb sprzedaży", "Sprzedał",
               "Typ właściciela", "Udział", "Udział [%]", "Rodzaj nieruchomości",
               "Dzielnica", "Obręb", "Arkusz", "Działka", "Liczba kondygn.",

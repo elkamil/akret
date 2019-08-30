@@ -1,34 +1,35 @@
 # import re
 # from itertools import islice
 import numpy as np
-from grunty.variables_ak import kolumny
-from grunty.formulas.data import data
-from grunty.formulas.grunt import lokalizacja
-from grunty.formulas.ulica import ulica
-from grunty.formulas.rodzaj_osoby import rodzaj_osoby
-from grunty.formulas.cena_laczna import cena_laczna
+
 from grunty.formulas.cena import cena, cena_1mkw
-from grunty.formulas.uwagi_do_ceny import uwagi_do_ceny
-from grunty.formulas.powierzchnia_gruntu import powierzchnia_gruntu
-from grunty.formulas.stan_prawny import stan_prawny
-from grunty.formulas.udzial import udzial
+from grunty.formulas.cena_laczna import cena_laczna
+from grunty.formulas.data import data
 from grunty.formulas.funkcja import funkcja
-from grunty.formulas.typ_budynku import typ_budynku
-from grunty.formulas.tryb_sprzedazy import tryb_sprzedazy
-from grunty.formulas.numer_wpisu import numer_wpisu
+from grunty.formulas.grunt import lokalizacja
+from grunty.formulas.kw import kw, kw_podzial
 # from grunty.formulas.ceny import ceny
 from grunty.formulas.nr_dok import nr_dok
-from grunty.formulas.kw import kw, kw_podzial
+from grunty.formulas.numer_wpisu import numer_wpisu
 from grunty.formulas.opis import opis
-from grunty.formulas.uzbrojenie import uzbrojenie
+from grunty.formulas.powierzchnia_gruntu import powierzchnia_gruntu
 from grunty.formulas.przeznaczenie_terenu import przeznaczenie_terenu
+from grunty.formulas.rodzaj_osoby import rodzaj_osoby
+from grunty.formulas.stan_prawny import stan_prawny
+from grunty.formulas.tryb_sprzedazy import tryb_sprzedazy
+from grunty.formulas.typ_budynku import typ_budynku
+from grunty.formulas.udzial import udzial
+from grunty.formulas.ulica import ulica
+from grunty.formulas.uwagi_do_ceny import uwagi_do_ceny
+from grunty.formulas.uzbrojenie import uzbrojenie
+from grunty.variables_ak import kolumny
 
 
 def if_statements(line):
     for i in kolumny:
         del i[:]
 
-# Funkcje
+    # Funkcje
     dane_adresowe = lokalizacja(line)
     dane_ulica = ulica(line)
     docs = nr_dok(line)

@@ -1,4 +1,5 @@
 import re
+
 from lokale.variables_ak import ae_przeznaczenie_terenu
 
 BZ = re.compile('Przez.*terenu\\s?:\\s?(.*?)(?=Opis)', re.DOTALL)

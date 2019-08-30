@@ -12,15 +12,17 @@ NOTE: replace values in ALL CAPS with your own values
 """
 
 import os
-import sys
 import smtplib
+import sys
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
-from variables import email_from, email_to, folder_tmp, pdf_folder, email_from_pass
-email_from='rciwnwro@gmail.com'
-email_to='rciwnwro@gmail.com'
-email_from_pass='y!mhsubx'
+
+from variables import email_from, email_to, pdf_folder, email_from_pass
+
+email_from = 'rciwnwro@gmail.com'
+email_to = 'rciwnwro@gmail.com'
+email_from_pass = 'y!mhsubx'
 # from csv2xlsx import xlsx_file, done_folder
 
 COMMASPACE = ', '
@@ -33,13 +35,13 @@ def sendemail(filename, xlsx_file):
 
     # Create the enclosing (outer) message
     outer = MIMEMultipart()
-    outer['Subject'] = 'Konwersja pliku: '+filename
+    outer['Subject'] = 'Konwersja pliku: ' + filename
     outer['To'] = COMMASPACE.join(recipients)
     outer['From'] = sender
     outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
 
     # List of attachments
-    attachments = [pdf_folder+filename, xlsx_file]
+    attachments = [pdf_folder + filename, xlsx_file]
 
     # Add the attachments to
     # the message
@@ -70,4 +72,3 @@ def sendemail(filename, xlsx_file):
     except:
         print("Unable to send the email. Error: ", sys.exc_info()[0])
         raise
-

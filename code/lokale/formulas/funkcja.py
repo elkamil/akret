@@ -1,4 +1,5 @@
 import re
+
 from lokale.variables_ak import o_funkcja, q_funkcja
 
 # B = re.compile('.*określono\s?[wW]\s?dniu\s?(.*)')

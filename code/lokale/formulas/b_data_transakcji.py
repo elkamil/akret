@@ -1,5 +1,7 @@
 import re
+
 from lokale_mieszkalne.variables import b_data_transakcji
+
 B = re.compile('.*określono\\s?[wW]\\s?dniu\\s?(.*)')
 
 

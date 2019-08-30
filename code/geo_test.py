@@ -3,9 +3,7 @@ __copyright__ = "Copyright 2018, 4imp Kamil Markowiak"
 __license__ = "GPL"
 __email__ = "kamil.markowiak@protonmail.com"
 
-import requests
 from geopy.geocoders import Nominatim
-
 
 
 # api_key = "074b2fc170173ee60f72"  #
@@ -24,16 +22,15 @@ def geo(ulica, nr_domu):
     location = geolocator.geocode(adres_osm)
     if location:
         print(location.raw)
-        osm = 'https://www.openstreetmap.org/{0}/{1}' .format(location.raw['osm_type'], location.raw['osm_id'])
+        osm = 'https://www.openstreetmap.org/{0}/{1}'.format(location.raw['osm_type'], location.raw['osm_id'])
     else:
         osm = ''
 
     # street_view = 'http://maps.google.com/maps?q=&layer=c&cbll={0},{1}' .format(output["latitude"], output["longitude"])
-    osm = 'https://www.openstreetmap.org/{0}/{1}' .format(location.raw['osm_type'],location.raw['osm_id'])
+    osm = 'https://www.openstreetmap.org/{0}/{1}'.format(location.raw['osm_type'], location.raw['osm_id'])
     print(osm)
     # return street_view, osm
     return osm
 
-geo('Waniliowa','18')
 
-
+geo('Waniliowa', '18')

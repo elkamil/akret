@@ -1,4 +1,5 @@
 import re
+
 from grunty.variables_ak import u_rep_a, v_nr_zmiany
 
 AH = re.compile('.*Nr\\s?dok\\.\\s?:\\s?([a-zA-Z]{0,4})-?\\s?(\\d+/\\d+)[-/](.*?)(?=,)')

@@ -1,5 +1,7 @@
 import re
+
 from grunty.variables_ak import w_kw, wa_kw_gruntu, wb_kw_budynku
+
 AF = re.compile('.*KW\\s?:\\s?(.*?)(?=[uU]zbrojenie)', re.DOTALL)
 
 
@@ -8,7 +10,7 @@ def kw(line):
         res12 = AF.search(line)
         res12prim = res12.group(1)
         res12prim2 = re.sub(r',$', '', res12prim)
-        correct = re.sub(r'\.',',', re.sub(r'(\||I|l)', '/', res12prim2))
+        correct = re.sub(r'\.', ',', re.sub(r'(\||I|l)', '/', res12prim2))
         w_kw.append(re.sub(r'\n', '', correct))
     else:
         w_kw.append('')
@@ -16,7 +18,7 @@ def kw(line):
 
 
 def kw_podzial(kw):
-    kw_str=''.join(kw)
+    kw_str = ''.join(kw)
     if kw_str == "":
         wa_kw_gruntu.append('')
         wb_kw_budynku.append('')

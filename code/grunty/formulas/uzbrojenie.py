@@ -1,4 +1,5 @@
 import re
+
 from grunty.variables_ak import x_uzbrojenie
 
 UZ = re.compile('Uzbrojenie\\s?:\\s?(.*?)(?=Rodzaj).*')

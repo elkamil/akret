@@ -1,5 +1,6 @@
-from lokale.variables_ak import c_ulica, d_nr, e_tryb_sprzedazy
 import re
+
+from lokale.variables_ak import c_ulica, d_nr, e_tryb_sprzedazy
 
 re_ulica = re.compile('\\d+\\s?\\.\\s(.*?)(?=,),\\s?(.*?)(?=\\s?\\()(.*)')
 re_numer_na_poczatku = re.compile('^\\d')
@@ -12,8 +13,13 @@ re_nawias = re.compile('\(')
 re_ulica_no_nawias = re.compile('\\d+\\s?\\.\\s(.*?)(?=,),\\s?(.*?)(?=$)')
 re_no_naw = re.compile('(.*?)(?=\\s?\\d)\\s?(.*)')
 
+
 def ulica(line):
-    line = re.sub(r'\|', 'I', re.sub(r'\sG[Aa]\s', ' 6a ', re.sub(r'\sG[gG]\s', ' 6g ', re.sub(r'\sG[dD]\s', ' 6d ', re.sub(r'G[bB]', '6b', re.sub(r'%', '9b', line.splitlines()[0]))))))
+    line = re.sub(r'\|', 'I', re.sub(r'\sG[Aa]\s', ' 6a ', re.sub(r'\sG[gG]\s', ' 6g ', re.sub(r'\sG[dD]\s', ' 6d ',
+                                                                                               re.sub(r'G[bB]', '6b',
+                                                                                                      re.sub(r'%', '9b',
+                                                                                                             line.splitlines()[
+                                                                                                                 0]))))))
     if re_nawias.search(line):
         if re_ulica.search(line) is not None:
             res4 = re_ulica.search(line)
@@ -47,4 +53,3 @@ def ulica(line):
         e_tryb_sprzedazy.append('')
 
     return c_ulica, d_nr, e_tryb_sprzedazy
-

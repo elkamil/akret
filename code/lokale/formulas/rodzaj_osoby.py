@@ -1,5 +1,7 @@
 import re
+
 from lokale.variables_ak import g_typ_wlasciciela
+
 Y = re.compile('Typ\\s?właś.*\\s?:\\s?(osoba fizyczna|\\s?osoba\\s?fizyczna|\\s?osoba\\s?prawna|gmina|\\s?gmina\\s?|\
                \\s?Skarb\\s?Państwa|Skarb Państwa)', re.IGNORECASE)
 

@@ -1,4 +1,5 @@
 import re
+
 from budynki.variables import p_cena, w_cena_brutto
 
 N = re.compile('.*Cena\\s?łączna\\snieruchomości\\s?:\\s?\\b([^zł]+)(?=\\s?z?ł?\\s?okre).*')
@@ -32,7 +33,7 @@ def ceny(line):
             w_cena_brutto.append(res6prim1)
         if res_y1 in ['gmina']:
             p_cena.append(res6prim1)
-            w_cena_brutto.append(res6prim1)    
+            w_cena_brutto.append(res6prim1)
         elif res_y1 in ['osoba prawna']:
             if brutto.search(uwagi_do_ceny) is None:
                 if netto.search(uwagi_do_ceny) is not None:
@@ -57,17 +58,17 @@ def ceny(line):
         p_cena.append('')
     # cena brutto
     # if ab_cena_brutto[0] !='' and m_powierzchnia_uzytkowa[0] !='':
-        # brutto_za_m2=float(ab_cena_brutto[0])/float(m_powierzchnia_uzytkowa[0])
-        # ac_cena_brutto_mp2.append(round(brutto_za_m2,2))
+    # brutto_za_m2=float(ab_cena_brutto[0])/float(m_powierzchnia_uzytkowa[0])
+    # ac_cena_brutto_mp2.append(round(brutto_za_m2,2))
     # else:
-        # ac_cena_brutto_mp2.append('')
+    # ac_cena_brutto_mp2.append('')
 
     # cena netto
     # if n_cena_laczna[0] !='' and m_powierzchnia_uzytkowa[0] !='' :
-        # netto_za_m2=float(n_cena_laczna[0])/float(m_powierzchnia_uzytkowa[0])
-        # o_cena_mp2.append(round(netto_za_m2,2))
+    # netto_za_m2=float(n_cena_laczna[0])/float(m_powierzchnia_uzytkowa[0])
+    # o_cena_mp2.append(round(netto_za_m2,2))
     # else:
-        # o_cena_mp2.append('')
+    # o_cena_mp2.append('')
     if p_cena[0]:
         p_cena_2f = ['%.2f' % elem for elem in [float(i) for i in p_cena]]
     else:

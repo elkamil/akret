@@ -1,4 +1,5 @@
 import re
+
 from lokale.variables_ak import ad_rodzaj_budynku
 
 # V = re.compile('Rodzaj\\s?bud\\.\\s?:\\s?(.*?)(?=(Przeznaczenie\\s?tere|Kupi)).*', re.DOTALL)

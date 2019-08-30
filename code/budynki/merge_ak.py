@@ -1,26 +1,27 @@
 import numpy as np
-from budynki.variables_ak import *
-from budynki.formulas.numer_wpisu import numer_wpisu
-from budynki.formulas.udzial import udzial
-from budynki.formulas.rodzaj_osoby import rodzaj_osoby
-from budynki.formulas.tryb_sprzedazy import tryb_sprzedazy
-from budynki.formulas.opis import opis
-from budynki.formulas.uzbrojenie import uzbrojenie
-from budynki.formulas.przeznaczenie_terenu import przeznaczenie_terenu
-from budynki.formulas.rodzaj_budynku import rodzaj_budynku
-from budynki.formulas.kw import kw, kw_podzial
+
+from budynki.formulas.cena import vv_cena, rr_cena, ww_cena_1mkw, ss_cena_1mkw
+from budynki.formulas.cena_laczna import cena_laczna
 from budynki.formulas.data import data
-from budynki.formulas.uwagi_do_ceny import uwagi_do_ceny
+from budynki.formulas.funkcja import oo_funkcja, qq_funkcja
+from budynki.formulas.kw import kw, kw_podzial
 from budynki.formulas.liczba_kondygnacji import liczba_kondygnacji
 from budynki.formulas.lokalizacja import lokalizacja
-from budynki.formulas.cena_laczna import cena_laczna
-from budynki.formulas.stan_prawny import stan_prawny
-from budynki.formulas.ulica import ulica
-from budynki.formulas.funkcja import oo_funkcja, qq_funkcja
+from budynki.formulas.nr_dok import nr_dok
+from budynki.formulas.numer_wpisu import numer_wpisu
+from budynki.formulas.opis import opis
 from budynki.formulas.powierzchnia_gruntu import powierzchnia_gruntu
 from budynki.formulas.powierzchnia_uzytkowa import powierzchnia_uzytkowa
-from budynki.formulas.cena import vv_cena, rr_cena, ww_cena_1mkw, ss_cena_1mkw
-from budynki.formulas.nr_dok import nr_dok
+from budynki.formulas.przeznaczenie_terenu import przeznaczenie_terenu
+from budynki.formulas.rodzaj_budynku import rodzaj_budynku
+from budynki.formulas.rodzaj_osoby import rodzaj_osoby
+from budynki.formulas.stan_prawny import stan_prawny
+from budynki.formulas.tryb_sprzedazy import tryb_sprzedazy
+from budynki.formulas.udzial import udzial
+from budynki.formulas.ulica import ulica
+from budynki.formulas.uwagi_do_ceny import uwagi_do_ceny
+from budynki.formulas.uzbrojenie import uzbrojenie
+from budynki.variables_ak import *
 
 
 def if_statements(line):
@@ -31,7 +32,6 @@ def if_statements(line):
     dane_ulica = ulica(line)
     docs = nr_dok(line)
     udz = udzial(line)
-
 
     a_okres = ['']
     b_nr = numer_wpisu(line)

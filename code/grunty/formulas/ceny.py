@@ -1,4 +1,5 @@
 import re
+
 from grunty.variables import n_cena_laczna, x_cena_brutto
 
 N = re.compile('.*Cena\\s?łączna\\snieruchomości\\s?:\\s?\\b([^zł]+)(?=\\s?z?ł?\\s?okre).*')
@@ -34,12 +35,12 @@ def ceny(line):
             x_cena_brutto.append(res6prim1)
         if res_y1 in ['gmina']:
             n_cena_laczna.append('')
-            x_cena_brutto.append(res6prim1)    
+            x_cena_brutto.append(res6prim1)
         elif res_y1 in ['osoba prawna']:
             if brutto.search(uwagi_do_ceny) is None:
                 if netto.search(uwagi_do_ceny) is not None:
                     n_cena_laczna.append(round(float(res6prim1), 2))
-                    brutto = float(res6prim1)*1.23
+                    brutto = float(res6prim1) * 1.23
                     x_cena_brutto.append(round(brutto, 2))
                 else:
                     x_cena_brutto.append(round(float(res6prim1), 2))
@@ -48,7 +49,7 @@ def ceny(line):
                     uwagi_do_ceny = "Brak informacji czy cena netto/brutto, ceny unettowiono " + uwagi_do_ceny
             else:
                 x_cena_brutto.append(round(float(res6prim1), 2))
-                netto = float(res6prim1)/1.23
+                netto = float(res6prim1) / 1.23
                 n_cena_laczna.append(round(netto, 2))
         else:
             x_cena_brutto.append('')
@@ -66,16 +67,16 @@ def ceny(line):
                 if brutto.search(uwagi_do_ceny) is None:
                     if netto.search(uwagi_do_ceny) is not None:
                         n_cena_laczna.append(round(float(res6prim1), 2))
-                        brutto = float(res6prim1)*1.23
+                        brutto = float(res6prim1) * 1.23
                         x_cena_brutto.append(round(brutto, 2))
                     else:
                         x_cena_brutto.append(round(float(res6prim1), 2))
-                        netto = float(res6prim1)/1.23
+                        netto = float(res6prim1) / 1.23
                         n_cena_laczna.append(round(netto, 2))
                         uwagi_do_ceny = "Brak informacji czy cena netto/brutto, ceny unettowiono " + uwagi_do_ceny
                 else:
                     x_cena_brutto.append(round(float(res6prim1), 2))
-                    netto = float(res6prim1)/1.23
+                    netto = float(res6prim1) / 1.23
                     n_cena_laczna.append(round(netto, 2))
             else:
                 x_cena_brutto.append('')

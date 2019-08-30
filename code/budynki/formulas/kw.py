@@ -1,5 +1,7 @@
 import re
+
 from budynki.variables_ak import ab_kw, ab_kw_gruntu, ab_kw_budynku
+
 AF = re.compile('.*KW\\s?:\\s?(.*?)(?=[uU]zbrojenie)', re.DOTALL)
 
 
@@ -17,7 +19,7 @@ def kw(line):
 
 
 def kw_podzial(kw):
-    kw_str=''.join(kw)
+    kw_str = ''.join(kw)
     if kw_str == "":
         ab_kw_gruntu.append('')
         ab_kw_budynku.append('')

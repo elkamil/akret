@@ -1,5 +1,6 @@
-from lokale.variables_ak import f_sprzedal
 import re
+
+from lokale.variables_ak import f_sprzedal
 
 X = re.compile('Sprzedał\\s?:(.*)', re.MULTILINE)
 

@@ -1,32 +1,38 @@
 <html>
 <title>Grunty</title>
 <head>
-		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/default.css')}}" />
-		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/component.css')}}" />
-		<script src="{{ url_for('static', filename='js/modernizr.custom.js')}}"></script>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/default.css')}}"/>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/component.css')}}"/>
+    <script src="{{ url_for('static', filename='js/modernizr.custom.js')}}"></script>
 </head>
 <div class="header">
-<h1> <center><font size="14" color="white">Grunty</font></center></h1>
+    <h1>
+        <center><font size="14" color="white">Grunty</font></center>
+    </h1>
 </div>
 
 <div style="float:left; width:50%;">
-<form action="" method=post enctype=multipart/form-data>
-	<!--section class="color-4"-->
-<p>	<input class="btn btn-4 btn-4c icon-arrow-right" type=file name=file size="80" accept=".pdf"></p>
-<p>	<input class="btn btn-4 btn-4c icon-arrow-right" type=submit value="Konwertuj na XLSX"></p>
-</form>
-<!--section class="color-4"-->
-<form action="/delete" method="post">
-<p> <button class="btn btn-4 btn-4c icon-arrow-right" name="forwardBtn" onclick="delete_files()" value="grunty"> Usuń Pliki</button></p>
-</form>
-<p><a class="btn btn-4 btn-4d icon-arrow-left" href="{{ url_for('index') }}">WRÓĆ</a></p>
+    <form action="" method=post enctype=multipart/form-data>
+        <!--section class="color-4"-->
+        <p><input class="btn btn-4 btn-4c icon-arrow-right" type=file name=file size="80" accept=".pdf"></p>
+        <p><input class="btn btn-4 btn-4c icon-arrow-right" type=submit value="Konwertuj na XLSX"></p>
+    </form>
+    <!--section class="color-4"-->
+    <form action="/delete" method="post">
+        <p>
+            <button class="btn btn-4 btn-4c icon-arrow-right" name="forwardBtn" onclick="delete_files()" value="grunty">
+                Usuń Pliki
+            </button>
+        </p>
+    </form>
+    <p><a class="btn btn-4 btn-4d icon-arrow-left" href="{{ url_for('index') }}">WRÓĆ</a></p>
 </div>
 
 <div style="float:right; width:50%;">
-	<!--section class="color-9"-->
-		{%- for item in tree %}
-	<p>	    <a class="btn btn-4 btn-4d icon-arrow-left" href="/static/grunty/{{ item }}">{{ item }}</a></p>
-		    {%- endfor %}
+    <!--section class="color-9"-->
+    {%- for item in tree %}
+    <p><a class="btn btn-4 btn-4d icon-arrow-left" href="/static/grunty/{{ item }}">{{ item }}</a></p>
+    {%- endfor %}
 
 </div>
 

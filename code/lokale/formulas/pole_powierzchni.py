@@ -1,4 +1,5 @@
 import re
+
 from lokale_mieszkalne.variables import cb_pole_powierzchni_gruntu
 
 CB = re.compile('.*Pow\\.\\s?:\\s?(.*)\\sha.*')

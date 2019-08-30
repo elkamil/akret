@@ -1,5 +1,6 @@
-from budynki.variables_ak import p_pow_gr
 import re
+
+from budynki.variables_ak import p_pow_gr
 
 CB = re.compile('.*Pow\\.\\s?:\\s?(.*)\\sha.*')
 

@@ -1,4 +1,5 @@
 import re
+
 from grunty.variables_ak import n_funkcja
 
 # B = re.compile('.*określono\s?[wW]\s?dniu\s?(.*)')

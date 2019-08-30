@@ -1,4 +1,5 @@
 import re
+
 from lokale.variables_ak import ac_uzbrojenie
 
 UZ = re.compile('Uzbrojenie\\s?:\\s?(.*?)(?=Rodzaj).*')

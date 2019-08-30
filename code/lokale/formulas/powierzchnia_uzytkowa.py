@@ -1,11 +1,11 @@
 import re
+
 from lokale.variables_ak import u_powierzchnia_uzytkowa
 
 M = re.compile('.*Pow\\.\\s?użytk\\.\\s?:\\s?\\b(.*)(?=\\s?m\\s?kw\\.).*')
 
 
 def powierzchnia_uzytkowa(line):
-
     if M.search(line):
         res6 = M.search(line)
         res6prim = res6.group(1)

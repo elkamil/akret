@@ -1,6 +1,7 @@
 import re
-from lokale_mieszkalne.variables import y_typ_wlasciciela, aj_sprzedajacy, n_cena_laczna, ab_cena_brutto,\
-                             m_powierzchnia_uzytkowa, ac_cena_brutto_mp2, o_cena_mp2
+
+from lokale_mieszkalne.variables import y_typ_wlasciciela, aj_sprzedajacy, n_cena_laczna, ab_cena_brutto, \
+    m_powierzchnia_uzytkowa, ac_cena_brutto_mp2, o_cena_mp2
 
 Y = re.compile('Typ\\s?właś.*\\s?:\\s?(osoba fizyczna|\\s?osoba\\s?fizyczna|\\s?osoba\\s?prawna|gmina|\\s?gmina\\s?|\
                \\s?Skarb\\s?Państwa|Skarb Państwa)', re.IGNORECASE)
@@ -45,21 +46,21 @@ def ceny(line):
             ab_cena_brutto.append(res6prim1)
         elif res_y1 in ['gmina']:
             n_cena_laczna.append('')
-            ab_cena_brutto.append(res6prim1)    
+            ab_cena_brutto.append(res6prim1)
         elif res_y1 in ['osoba prawna']:
             if brutto.search(uwagi_do_ceny) is None:
                 if netto.search(uwagi_do_ceny) is not None:
                     n_cena_laczna.append(round(float(res6prim1), 2))
-                    brutto = float(res6prim1)*1.08
+                    brutto = float(res6prim1) * 1.08
                     ab_cena_brutto.append(round(brutto, 2))
                 else:
                     ab_cena_brutto.append(round(float(res6prim1), 2))
                     netto = float(res6prim1) / 1.08
                     n_cena_laczna.append(round(netto, 2))
-                    uwagi_do_ceny = "Brak informacji czy cena netto/brutto, ceny unettowiono "+uwagi_do_ceny
+                    uwagi_do_ceny = "Brak informacji czy cena netto/brutto, ceny unettowiono " + uwagi_do_ceny
             else:
                 ab_cena_brutto.append(round(float(res6prim1), 2))
-                netto = float(res6prim1)/1.08
+                netto = float(res6prim1) / 1.08
                 n_cena_laczna.append(round(netto, 2))
         else:
             n_cena_laczna.append('')
@@ -77,18 +78,17 @@ def ceny(line):
 
     # cena brutto
     if ab_cena_brutto[0] != '' and m_powierzchnia_uzytkowa[0] != '':
-        brutto_za_m2 = float(ab_cena_brutto[0])/float(m_powierzchnia_uzytkowa[0])
+        brutto_za_m2 = float(ab_cena_brutto[0]) / float(m_powierzchnia_uzytkowa[0])
         ac_cena_brutto_mp2.append(round(brutto_za_m2, 2))
     else:
         ac_cena_brutto_mp2.append('')
 
     # cena netto
     if n_cena_laczna[0] != '' and m_powierzchnia_uzytkowa[0] != '':
-        netto_za_m2 = float(n_cena_laczna[0])/float(m_powierzchnia_uzytkowa[0])
+        netto_za_m2 = float(n_cena_laczna[0]) / float(m_powierzchnia_uzytkowa[0])
         o_cena_mp2.append(round(netto_za_m2, 2))
     else:
         o_cena_mp2.append('')
-
 
     if n_cena_laczna[0]:
         n_cena_laczna_2f = ['%.2f' % elem for elem in [float(i) for i in n_cena_laczna]]
@@ -106,7 +106,7 @@ def ceny(line):
         o_cena_mp2_2f = ['%.2f' % elem for elem in [float(i) for i in o_cena_mp2]]
     else:
         o_cena_mp2_2f = ['']
-    return y_typ_wlasciciela, aj_sprzedajacy, uwagi_do_ceny, n_cena_laczna_2f, ab_cena_brutto_2f,\
+    return y_typ_wlasciciela, aj_sprzedajacy, uwagi_do_ceny, n_cena_laczna_2f, ab_cena_brutto_2f, \
            m_powierzchnia_uzytkowa, ac_cena_brutto_mp2_2f, o_cena_mp2_2f
 
     # return y_typ_wlasciciela, aj_sprzedajacy, uwagi_do_ceny, format(n_cena_laczna, '.2f'),

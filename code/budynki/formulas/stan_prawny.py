@@ -1,5 +1,6 @@
-from budynki.variables_ak import f_sprzedal
 import re
+
+from budynki.variables_ak import f_sprzedal
 
 # X = re.compile('Sprzedał\\s?:\\s?(.*?)(?=Kupi).*', re.DOTALL)
 X = re.compile('Sprzedał\\s?:(.*)', re.MULTILINE)
