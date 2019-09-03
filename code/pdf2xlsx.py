@@ -15,15 +15,15 @@ from ocr2csv import OCR2CSV
 from variables import folder_tmp, pdf_folder
 
 
-def main(filename, wybor):
+def main(filename):
     # create_structure()
-    ilosc_stron = Ilosc_Stron_PDF(pdf_folder + filename)
+    Ilosc_Stron_PDF(pdf_folder + filename)
     print(time.strftime("%H:%M:%S"))
-    gs = "C:\\Program Files\\gs\\gs9.26\\bin\\gswin64c.exe"
-    file = folder_tmp + "result.txt"
-    ocr = subprocess.Popen([gs, '-sDEVICE=txtwrite', '-dNOPAUSE', '-dBATCH',
-                      '-sOUTPUTFILE=C:\\Users\\User\\PycharmProjects\\akret\\code\\tmp\\result.txt',
-                      pdf_folder + filename])
+    gs_exe = "C:\\Program Files\\gs\\gs9.26\\bin\\gswin64c.exe"
+    #file = folder_tmp + "result.txt"
+    ocr = subprocess.Popen([gs_exe, '-sDEVICE=txtwrite', '-dNOPAUSE', '-dBATCH',
+                            '-sOUTPUTFILE=C:\\Users\\User\\PycharmProjects\\akret\\code\\tmp\\result.txt',
+                            pdf_folder + filename])
     ocr.wait()
     ocr.kill()
     ocr.poll()
@@ -31,9 +31,8 @@ def main(filename, wybor):
     RemoveBlankLines()
     # if isOnline():
     #     sendbeforeemail(filename)
-    print(wybor)
-    OCR2CSV(wybor)
-    xlsx_f = CSV2XLSX(filename, wybor)
+    OCR2CSV()
+    xlsx_f = CSV2XLSX(filename)
     # if isOnline():
     #    sendemail(filename, xlsx_f)
     clear_tmp_files(filename)
@@ -41,6 +40,6 @@ def main(filename, wybor):
     return xlsx_f
 
 
-if __name__ == "__main__":
-    # main("zkk17.te.6621.1863.2018_wolny_rynek.pdf", 1)
-    main()
+if __name__ == "__main__":#
+    #main("przetargowe.pdf", 1)
+    main(filename)

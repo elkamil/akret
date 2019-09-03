@@ -35,7 +35,6 @@ def if_statements(line):
     b_nr = numer_wpisu(line)
     c_ulica = dane_ulica[0]
     d_nr = dane_ulica[1]
-    # e_tryb_sprzedazy = tryb_sprzedazy(line)
     e_tryb_sprzedazy = dane_ulica[2]
     f_sprzedal = stan_prawny(line)
     g_typ_wlasciciela = rodzaj_osoby(line)
@@ -68,8 +67,6 @@ def if_statements(line):
     kw_kolumny = kw_podzial(ab_kw)
     ag_kw_gruntowa = kw_kolumny[0]
     ah_kw_lokalu = kw_kolumny[1]
-    # for i in kolumny:
-    #     print(i[:])
 
     z = np.column_stack((a_okres, b_nr, c_ulica, d_nr, e_tryb_sprzedazy,
                          f_sprzedal, g_typ_wlasciciela, h_udzial, h1_udzial_procent,

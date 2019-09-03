@@ -6,18 +6,14 @@ import os
 
 # Input_PDF_FILE = sys.argv[1]
 print(os.getcwd())
-z = os.getcwd()
-home = z
-TMP_JPEG_FILE = "sample.bmp"
-tmp_bmp1_file = "sample.bmp1"
-tmp_bmp2_file = "sample.bmp2"
-tmp_bmp3_file = "sample.bmp3"
+home = os.getcwd()
 Input_file = "result.txt"
-folder = home + "\..\workspace\ee_workdir\\"
-static_folder = home + "\..\workspace\static\\"
-static_dir = home + "\..\workspace\static"
+folder = home + "\workdir\\"
+logs_dir = folder+"logs\\"
+static_dir = home + "\static"
+backup_folder = static_dir + "\\backup\lokale_mieszkalne\\"
 code_folder = ""
-done_folder = folder + "static\\"
+done_folder = static_dir+"\lokale_mieszkalne\\"
 folder_tmp = home + "\\tmp\\"
 pdf_folder = folder + "pdf\\"
 split_pdf_1 = "split1.pdf"
@@ -33,12 +29,12 @@ lokale_csv_file = "lokale.csv"
 xlsx_file = "my_excel.xlsx"
 wpisy = "Wpisy.txt"
 line_numbers = "Line_Numbers.txt"
-files = [split_pdf_1, split_pdf_2, split_pdf_3, result_no_blank_lines, csv_file,
-         wpisy, line_numbers, tmp_bmp1_file, tmp_bmp2_file, tmp_bmp3_file]
+#files = [split_pdf_1, split_pdf_2, split_pdf_3, result_no_blank_lines, csv_file,
+#         wpisy, line_numbers, tmp_bmp1_file, tmp_bmp2_file, tmp_bmp3_file]
+files = [split_pdf_1, split_pdf_2, split_pdf_3, result_no_blank_lines, csv_file, wpisy, line_numbers ]
 obreby_plik = home + "\data\obreby.csv"
 
-folder_pdf_splits = folder_tmp + "split_pdf\\"
-folder_csv_splits = folder_tmp + "split_csv\\"
+xlsx_folder = static_dir + "\lokale_mieszkalne"
 
 # email variables
 email_to = 'kamil.markowiak@gmail.com'

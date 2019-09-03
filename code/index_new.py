@@ -7,6 +7,7 @@ import logging
 import os
 import re
 from logging.handlers import RotatingFileHandler
+import time
 
 import flask as fl
 from flask import Flask, request, redirect, url_for
@@ -15,6 +16,7 @@ from werkzeug import secure_filename
 from pdf2xlsx import main as pdf2xlsx
 from shutdown import shutdown as shutdown_f
 from variables import folder, static_dir
+from create_structure import create_structure
 
 
 def redirect_url():
@@ -50,7 +52,6 @@ def index():
 
 @app.route('/lokale_mieszkalne', methods=['GET', 'POST'])
 def lokale_mieszkalne():
-    wybor = 1
     path_lokale = STATIC_FOLDER + '/lokale_mieszkalne'
     if request.method == 'POST':
         file = request.files['file']
@@ -58,7 +59,7 @@ def lokale_mieszkalne():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             app.logger.info("Start procesu konwertowania dla pliku: " + filename)
-            pdf2xlsx(filename, wybor)
+            pdf2xlsx(filename)
             app.logger.info("Koniec procesu konwertowania dla pliku: " + filename)
             return redirect(url_for('lokale_mieszkalne'))
             # return fl.render_template('progress.html')
@@ -136,4 +137,5 @@ if __name__ == "__main__":
     handler.setFormatter(formatter)
     handler.setLevel(logging.INFO)
     app.logger.addHandler(handler)
+    create_structure()
     app.run(host='0.0.0.0', port=5000, debug=True)

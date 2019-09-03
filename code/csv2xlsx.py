@@ -8,20 +8,19 @@ from shutil import copyfile
 import pandas as pd
 
 from csv_record_separator import NumeryLiniiDoPodzialu
-from variables import folder_tmp, lokale_csv_file, grunty_csv_file, budynki_csv_file, static_folder, \
-    pdf_folder
+from variables import folder_tmp, lokale_csv_file, grunty_csv_file, budynki_csv_file, static_dir, \
+    pdf_folder, backup_folder, done_folder
 
 
 # lokale mieszkalne
 
 
-def CSV2XLSX(filename, wybor):
+def CSV2XLSX(filename):
     print(filename)
     print(pdf_folder + "Probka.pdf")
     add_pdf = pdf_folder + "Probka.pdf"
     numery_linii_do_podzialu = NumeryLiniiDoPodzialu()
-    done_folder = static_folder + "lokale_mieszkalne/"
-    backup_folder = static_folder + "backup/lokale_mieszkalne/"
+    #done_folder = static_dir + "lokale_mieszkalne/"
 
     xlsx_file = filename + ".xlsx"
     engine = 'xlsxwriter'

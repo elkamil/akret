@@ -27,7 +27,8 @@ budynek_regex = re.compile('^GRUNT\s+BUDYNEK$', re.MULTILINE)
 izby_regex = re.compile('Liczba\\s?izb', re.MULTILINE)
 
 
-def OCR2CSV(wybor):
+def OCR2CSV():
+    wybor = 1
     print("...Tworzenie pliku CSV z OCR...")
     numery_linii_do_podzialu = NumeryLiniiDoPodzialu()
     pbar_ocr2csv = tqdm(total=len(numery_linii_do_podzialu))
@@ -81,7 +82,6 @@ def OCR2CSV(wybor):
                 line = ''.join(islice(dane3, numery_linii_do_podzialu[i] - 1,
                                       ilosc_el))
                 if grunty_regex.search(line) is not None:
-                    # z = if_statements(line)
                     z = grunty_merge(line)
                     writer_grunty = csv.writer(finito_grunty, delimiter=';',
                                                quoting=csv.QUOTE_ALL)
@@ -103,6 +103,3 @@ def OCR2CSV(wybor):
     finito_budynki.close()
     finito_lokale.close()
     pbar_ocr2csv.close()
-    # CSV2XLSX('budy', wybor)
-
-# OCR2CSV(1)
