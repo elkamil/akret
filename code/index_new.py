@@ -4,12 +4,14 @@ __license__ = "GPL"
 __email__ = "kamil.markowiak@protonmail.com"
 
 import logging
+import redis
 import os
 import re
 from logging.handlers import RotatingFileHandler
 import time
 
 import flask as fl
+from flask import Response
 from flask import Flask, request, redirect, url_for
 from werkzeug import secure_filename
 
@@ -128,6 +130,29 @@ def test():
     thePercent = str(int(40))
     print(thePercent)
     return fl.render_template("predictions.html", thePercent=thePercent)
+
+redis_host = "localhost"
+redis_port = 6379
+redis_password = ""
+r = redis.StrictRedis(
+  host=redis_host, port=redis_port, password=redis_password, decode_responses=True)
+
+@app.route('/progress')
+def progress():
+  """Get percentage progress for auto attribute process"""
+  r.set("progress", str(0))
+  def progress_stream():
+    p = int(r.get("progress"))
+    while p < 100:
+      p = int(r.get("progress"))
+      p_msg = "data:" + str(p) + "\n\n"
+      yield p_msg
+      # Client closes EventSource on 100%, gets reopened when `submit` is pressed
+      if p == 100:
+        r.set("progress", str(0))
+      time.sleep(1)
+
+  return Response(progress_stream(), mimetype='text/event-stream')
 
 
 if __name__ == "__main__":
