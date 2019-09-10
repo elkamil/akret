@@ -12,20 +12,24 @@ obreby_csv = pd.read_csv(obreby_plik, sep=';', encoding='utf-8')
 
 
 def lokalizacja(line):
-    if H.search(line):
-        res3 = H.search(line)
-        obr = res3.group(1) + res3.group(2) + " - " + res3.group(3)
-        k_obreb.append(obr)
-        nr_dzialki = res3.group(5) + res3.group(7)
+    try:
+        if H.search(line):
+            res3 = H.search(line)
+            obr = res3.group(1) + res3.group(2) + " - " + res3.group(3)
+            k_obreb.append(obr)
+            nr_dzialki = res3.group(5) + res3.group(7)
 
-        l_arkusz.append(res3.group(4))
-        m_dzialka.append(nr_dzialki)
-        G = obreby_csv[obreby_csv['Numer'] == int(res3.group(2))].Dzielnica
-        G_val = G.values
-        j_dzielnica.append(G_val)
-    else:
-        k_obreb.append('')
-        l_arkusz.append('')
-        m_dzialka.append('')
-        j_dzielnica.append('')
-    return k_obreb, l_arkusz, m_dzialka, j_dzielnica
+            l_arkusz.append(res3.group(4))
+            m_dzialka.append(nr_dzialki)
+            G = obreby_csv[obreby_csv['Numer'] == int(res3.group(2))].Dzielnica
+            G_val = G.values
+            j_dzielnica.append(G_val)
+        else:
+            k_obreb.append('')
+            l_arkusz.append('')
+            m_dzialka.append('')
+            j_dzielnica.append('')
+        return k_obreb, l_arkusz, m_dzialka, j_dzielnica
+    except:
+        return k_obreb, l_arkusz, m_dzialka, j_dzielnica
+

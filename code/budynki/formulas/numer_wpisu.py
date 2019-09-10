@@ -7,11 +7,17 @@ re_numer_wpisu = re.compile('(\\d+)\\..*')
 
 
 def numer_wpisu(line):
-    # nospace = re.sub(r'\\s+', '', line)
-    line = re.sub(r'\s+', '', line.splitlines()[0])
-    if re_numer_wpisu.search(line):
-        res9 = re_numer_wpisu.search(line)
-        b_nr.append(res9.group(1))
-    else:
+    try:
+        # nospace = re.sub(r'\\s+', '', line)
+        line = re.sub(r'\s+', '', line.splitlines()[0])
+        if re_numer_wpisu.search(line):
+            res9 = re_numer_wpisu.search(line)
+            b_nr.append(res9.group(1))
+        else:
+            b_nr.append('')
+        return b_nr
+    except:
+        print("Numer wpisu error")
         b_nr.append('')
-    return b_nr
+        return b_nr
+

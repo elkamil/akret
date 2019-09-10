@@ -6,9 +6,12 @@ AK = re.compile('.*Liczba\\s?kondygn\\.\\s?:\\s?(\\d+)')
 
 
 def liczba_kondygnacji(line):
-    if AK.search(line):
-        res5 = AK.search(line)
-        n_liczba_kondygnacji.append(res5.group(1))
-    else:
-        n_liczba_kondygnacji.append('')
-    return n_liczba_kondygnacji
+    try:
+        if AK.search(line):
+            res5 = AK.search(line)
+            n_liczba_kondygnacji.append(res5.group(1))
+        else:
+            n_liczba_kondygnacji.append('')
+        return n_liczba_kondygnacji
+    except:
+        return n_liczba_kondygnacji

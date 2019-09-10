@@ -20,12 +20,13 @@ from lokale.formulas.ulica import ulica
 from lokale.formulas.uwagi_do_ceny import uwagi_do_ceny
 from lokale.formulas.uzbrojenie import uzbrojenie
 from lokale.variables_ak import *
+import re
 
 
 def if_statements(line):
     for i in kolumny:
         del i[:]
-
+    #line = re.sub(r'\s{2,}',' ',line)
     dane_adresowe = lokalizacja(line)
     dane_ulica = ulica(line)
     docs = nr_dok(line)

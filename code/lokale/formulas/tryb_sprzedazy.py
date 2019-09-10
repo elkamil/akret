@@ -7,10 +7,13 @@ re_tryb = re.compile('\\d+\\s?\\.\\s?Wroc.*\\((.*)\\)')
 
 
 def tryb_sprzedazy(line):
-    # nospace = re.sub(r'\\s+', '', line)
-    if re_tryb.search(line):
-        res9 = re_tryb.search(line)
-        e_tryb_sprzedazy.append(res9.group(1))
-    else:
-        e_tryb_sprzedazy.append('')
-    return e_tryb_sprzedazy
+    try:
+        # nospace = re.sub(r'\\s+', '', line)
+        if re_tryb.search(line):
+            res9 = re_tryb.search(line)
+            e_tryb_sprzedazy.append(res9.group(1))
+        else:
+            e_tryb_sprzedazy.append('')
+        return e_tryb_sprzedazy
+    except:
+        return e_tryb_sprzedazy

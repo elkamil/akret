@@ -7,9 +7,12 @@ V = re.compile('Rodzaj\\s?bud\\.\\s?:(.*)', re.MULTILINE)
 
 
 def typ_budynku(line):
-    if V.search(line):
-        res7 = V.search(line)
-        z_rodzaj_bud.append(res7.group(1))
-    else:
-        z_rodzaj_bud.append('-')
-    return z_rodzaj_bud
+    try:
+        if V.search(line):
+            res7 = V.search(line)
+            z_rodzaj_bud.append(res7.group(1))
+        else:
+            z_rodzaj_bud.append('-')
+        return z_rodzaj_bud
+    except:
+        return z_rodzaj_bud

@@ -52,11 +52,10 @@ def NumeryLiniiDoPodzialu():
                     test1.write("%s\n" % line)
                     numery_linii_do_podzialu.append(line_i)
     return numery_linii_do_podzialu
-    test1.close()
 
 
 def OCR2CSV():
-    wybor = 1
+    # wybor = 1
     print("...Tworzenie pliku CSV z OCR...")
     numery_linii_do_podzialu = NumeryLiniiDoPodzialu()
     pbar_ocr2csv = tqdm(total=len(numery_linii_do_podzialu))

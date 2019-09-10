@@ -1,15 +1,19 @@
 <html>
 <title>Konwersja PDF2Excel</title>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/default.css')}}"/>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/component.css')}}"/>
     <script src="{{ url_for('static', filename='js/modernizr.custom.js')}}"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
-</head>
-  <script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap_new.css') }}">
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+     <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+ <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+ <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+    <script>
   function getProgress() {
+  $(".progress").css('visibility', 'visible');
+  $(".container-2").fadeTo("slow",0.15);
     var source = new EventSource("/progress");
     source.onmessage = function(event) {
       $('.progress-bar').css('width', event.data+'%').attr('aria-valuenow', event.data);
@@ -17,7 +21,8 @@
 
       // Event source closed after hitting 100%
       if(event.data == 100){
-        source.close()
+      $('progress').hide();
+        source.close();
 
       }
     }
@@ -27,45 +32,61 @@
 }, 5000, function() {
     $(this).closest('.progress').fadeOut();
 });
-  </script>
-<div class="header">
-    <h1>
-        <center><font size="14" color="white">Konwersja PDF2Excel</font></center>
-    </h1>
-</div>
-<div id="loadingDiv" style="display:none;"><img src="{{ url_for('static', filename='spinner.gif')}}" alt=""/></div>
 
-<div style="float:left; width:50%;">
-    <form action="" method=post enctype=multipart/form-data>
-        <!--section class="color-4"-->
-        <p><input class="btn btn-4 btn-4c icon-arrow-right" type=file name=file size="80" accept=".pdf"></p>
-        <p><input class="btn btn-4 btn-4c icon-arrow-right" type=submit onclick="$('#loadingDiv').show();getProgress()"
-                  value="Konwertuj na XLSX"></p>
-    </form>
-    <!--section class="color-4"-->
-    <!--div id="loading" style="display:none;"><img src="{{ url_for('static', filename='spinner.gif')}}" alt="" />Loading!</div-->
-    <form action="/delete" method="post">
-        <p>
-            <button class="btn btn-4 btn-4c icon-arrow-right" name="forwardBtn" onclick="delete_files()"
-                    value="lokale_mieszkalne"> Usuń Pliki
-            </button>
-        </p>
-    </form>
-    <p><a class="btn btn-4 btn-4d icon-arrow-left" href="{{ url_for('index') }}">WRÓĆ</a></p>
-    <div class="verticalLine"></div>
-</div>
-<div style="float:right; width:50%;">
-    <!--section class="color-9"-->
-    {%- for item in tree %}
-    <p><a class="btn btn-4 btn-4d icon-arrow-left" href="/static/lokale_mieszkalne/{{ item }}">{{ item }}</a></p>
-    {%- endfor %}
 
-</div>
-<div class="progress" style="float:center; width:100%; margin-left:150px; margin-right:150px;">
-    <div class="progress-bar progress-bar-striped active"
-         role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style=" float:center; width: 0%">
-        <span class="progress-bar-label">0%</span>
+    </script>
+<header class="masthead border-bottom border-white ">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 text-center">
+          <font size="5" color="white"><h1 fontclass="font-weight-light">KONWERSJA XLSX</h1></font>
+      </div>
     </div>
+  </div>
+</header>
+
+<div class="container-2 h-100 w-100 float-left">
+    <div class="row h-100 w-100">
+        <div class="col-md-4 ">
+            <form action="" method=post enctype=multipart/form-data>
+                <p><input class="btn btn-primary btn-lg" type=file name=file size="80" accept=".pdf"></p>
+                <p><input class="btn btn-primary btn-lg" type=submit onclick="$('#loadingDiv').show();getProgress()"
+                          value="Konwertuj na XLSX"></p>
+            </form>
+            <form action="/delete" method="post">
+                <p>
+                    <button class="btn btn-primary btn-lg" name="forwardBtn" onclick="delete_files()"
+                            value="lokale_mieszkalne"> Usuń Pliki
+                    </button>
+                </p>
+            </form>
+            <p><a class="btn btn-primary btn-lg" href="{{ url_for('index') }}">WRÓĆ</a></p>
+            <div class="verticalLine"></div>
+        </div>
+    <div class="col-md-4 offset-md-4">
+
+        <!--section class="color-9"-->
+        {%- for item in tree %}
+        <p><a class="btn btn-primary btn-lg" href="/static/lokale_mieszkalne/{{ item }}">{{ item }}</a></p>
+        {%- endfor %}
+
+    </div>
+
+
+    </div>
+
+    </div>
+<div class="container center-container">
+     <div class="row" >
+<div class="col">
+            <div class="progress" style="visibility: hidden; width:50%;height: 50px;">
+                <div class="progress-bar progress-bar-striped active progress-bar-animated"
+                     role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                     style="float:center; width:0%;height:50px;"/>
+                <span class="progress-bar-label">0%</span>
+            </div>
+    </div>
+
 </div>
 </html>
 

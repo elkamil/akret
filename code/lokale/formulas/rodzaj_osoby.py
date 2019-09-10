@@ -7,9 +7,12 @@ Y = re.compile('Typ\\s?właś.*\\s?:\\s?(osoba fizyczna|\\s?osoba\\s?fizyczna|\\
 
 
 def rodzaj_osoby(line):
-    if Y.search(line):
-        res = Y.search(line)
-        g_typ_wlasciciela.append(res.group(1))
-    else:
-        g_typ_wlasciciela.append('-')
-    return g_typ_wlasciciela
+    try:
+        if Y.search(line):
+            res = Y.search(line)
+            g_typ_wlasciciela.append(res.group(1))
+        else:
+            g_typ_wlasciciela.append('-')
+        return g_typ_wlasciciela
+    except:
+        return g_typ_wlasciciela

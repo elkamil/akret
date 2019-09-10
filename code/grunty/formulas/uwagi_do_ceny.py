@@ -6,9 +6,12 @@ re_uwagi_do_ceny = re.compile('.*Uwagi\\s?do\\s?ceny\\s?:\\s?(.*?)(?=\\s?Nr\\s?d
 
 
 def uwagi_do_ceny(line):
-    if re_uwagi_do_ceny.search(line):
-        res11 = re_uwagi_do_ceny.search(line)
-        t_uwagi_do_ceny.append(re.sub(r'2[Łł]', 'zł', re.sub(r'\n', '', res11.group(1))))
-    else:
-        t_uwagi_do_ceny.append('-')
-    return t_uwagi_do_ceny
+    try:
+        if re_uwagi_do_ceny.search(line):
+            res11 = re_uwagi_do_ceny.search(line)
+            t_uwagi_do_ceny.append(re.sub(r'2[Łł]', 'zł', re.sub(r'\n', '', res11.group(1))))
+        else:
+            t_uwagi_do_ceny.append('-')
+        return t_uwagi_do_ceny
+    except:
+        return t_uwagi_do_ceny

@@ -32,9 +32,9 @@ body {
 	color: #457ABB;
 	/*background: #BC5888;*/
 	/*background-image: url('/static/logo_ee.png') ;*/
-	background-size: 40%; 
+	background-size: 40%;
 	background-repeat:   no-repeat;
-	background-position: center; 
+	background-position: center;
 
 }
 
@@ -238,32 +238,3 @@ a:active {
   border-left: thick solid #ff0000;
 }
 
-progress {
-  text-align: center;
-  height: 1.5em;
-  width: 100%;
-  -webkit-appearance: none;
-  border: none;
-
-  /* Set the progressbar to relative */
-  position:relative;
-}
-progress:before {
-  content: attr(data-label);
-  font-size: 0.8em;
-  vertical-align: 0;
-
-  /*Position text over the progress bar */
-  position:absolute;
-  left:0;
-  right:0;
-}
-progress::-webkit-progress-bar {
-  background-color: #c9c9c9;
-}
-progress::-webkit-progress-value {
-  background-color: #7cc4ff;
-}
-progress::-moz-progress-bar {
-  background-color: #7cc4ff;
-}

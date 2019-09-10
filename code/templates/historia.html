@@ -1,38 +1,51 @@
 <html>
 <title>Historia</title>
 <head>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/default.css')}}"/>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/component.css')}}"/>
     <script src="{{ url_for('static', filename='js/modernizr.custom.js')}}"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel=stylesheet type=text/css class="btn btn-5"
+          href="{{ url_for('static', filename='css/bootstrap_new.css') }}">
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<div class="header">
-    <h1>
-        <center><font size="14" color="white">Historia</font></center>
-    </h1>
-</div>
 
-<div style="float:left;width:50%; position:relative;">
-    <p><a class="btn btn-4 btn-4d icon-arrow-left" href="{{ url_for('index') }}">WRÓĆ</a></p>
-    <form action="/delete_history" method="post">
-        <p>
-            <button class="btn btn-4 btn-4c icon-arrow-right" name="forwardBtn" onclick="delete_history_files()"
-                    value="delete_history"> Usuń Pliki
-            </button>
-        </p>
-    </form>
-
-</div>
-
-<body>
-<div style="float:center; width:50%;position:relative;">
-    <div style="float:right;width: 50%;position:relative;">
-        <!--section class="color-9"-->
-        {%- for item in tree_h_lokale %}
-        <p><a class="btn1 btn1-10 btn1-10d icon-arrow-left" href="/static/backup/lokale_mieszkalne/{{ item }}">{{ item
-            }}</a></p>
-        {%- endfor %}
+<header class="masthead border-bottom border-white ">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <font size="5" color="white"><h1 fontclass="font-weight-light">KONWERSJA XLSX</h1></font>
+            </div>
+        </div>
     </div>
+</header>
 
-</body>
+<div class="container-2 h-100 w-100 float-left">
+    <div class="row h-100 w-100">
+        <div class="col-md-4 ">
+            <p><a class="btn btn-primary btn-lg" href="{{ url_for('index') }}">WRÓĆ</a></p>
+            <form action="/delete_history" method="post">
+                <p>
+                    <button class="btn btn-primary btn-lg" name="forwardBtn" onclick="delete_history_files()"
+                            value="delete_history"> Usuń Pliki
+                    </button>
+                </p>
+            </form>
+
+        </div>
+        <div class="col-md-4 offset-md-4">
+            <!--section class="color-9"-->
+            {%- for item in tree_h_lokale %}
+            <p><a class="btn btn-primary btn-lg" href="/static/backup/lokale_mieszkalne/{{ item }}">{{ item
+                }}</a></p>
+            {%- endfor %}
+        </div>
+    </div>
+</div>
+
+    </body>
 </html>
 

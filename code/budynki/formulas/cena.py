@@ -12,53 +12,65 @@ number = re.compile('\d')
 
 
 def vv_cena(line):
-    if B.search(line):
-        res2 = B.search(line)
-        result = re.sub(r'[^\d\.]', '', res2.group(1))
-        if number.search(result):
-            v_cena.append(result)
+    try:
+        if B.search(line):
+            res2 = B.search(line)
+            result = re.sub(r'[^\d\.]', '', res2.group(1))
+            if number.search(result):
+                v_cena.append(result)
+            else:
+                v_cena.append('')
+
         else:
             v_cena.append('')
-
-    else:
-        v_cena.append('')
-    return v_cena
+        return v_cena
+    except:
+        return v_cena
 
 
 def rr_cena(line):
-    if C.search(line):
-        res2 = C.search(line)
-        result = re.sub(r'[^\d\.]', '', res2.group(1))
-        if number.search(result):
-            r_cena.append(result)
+    try:
+        if C.search(line):
+            res2 = C.search(line)
+            result = re.sub(r'[^\d\.]', '', res2.group(1))
+            if number.search(result):
+                r_cena.append(result)
+            else:
+                r_cena.append('')
         else:
             r_cena.append('')
-    else:
-        r_cena.append('')
-    return r_cena
+        return r_cena
+    except:
+        return r_cena
 
 
 def ww_cena_1mkw(line):
-    if B1.search(line):
-        res2 = B1.search(line)
-        result = re.sub(r'[^\d\.]', '', res2.group(1))
-        if number.search(result):
-            w_cena_1mkw.append(result)
+    try:
+        if B1.search(line):
+            res2 = B1.search(line)
+            result = re.sub(r'[^\d\.]', '', res2.group(1))
+            if number.search(result):
+                w_cena_1mkw.append(result)
+            else:
+                w_cena_1mkw.append('')
         else:
             w_cena_1mkw.append('')
-    else:
-        w_cena_1mkw.append('')
-    return w_cena_1mkw
+        return w_cena_1mkw
+    except:
+        return w_cena_1mkw
 
 
 def ss_cena_1mkw(line):
-    if C1.search(line):
-        res2 = C1.search(line)
-        result = re.sub(r'[^\d\.]', '', res2.group(2))
-        if number.search(result):
-            s_cena_1mkw.append(result)
+    try:
+        if C1.search(line):
+            res2 = C1.search(line)
+            result = re.sub(r'[^\d\.]', '', res2.group(2))
+            if number.search(result):
+                s_cena_1mkw.append(result)
+            else:
+                s_cena_1mkw.append('')
         else:
             s_cena_1mkw.append('')
-    else:
-        s_cena_1mkw.append('')
-    return s_cena_1mkw
+        return s_cena_1mkw
+    except:
+        return s_cena_1mkw

@@ -1,3 +1,5 @@
+import os
+
 __author__ = "Kamil Markowiak"
 __copyright__ = "Copyright 2018, 4imp Kamil Markowiak"
 __license__ = "GPL"
@@ -10,7 +12,6 @@ import time
 
 from PyPDF2 import PdfFileReader
 
-from clear_tmp import clear_tmp_files
 from csv2xlsx import CSV2XLSX
 from ocr2csv import OCR2CSV
 from variables import folder_tmp, Input_file, result_no_blank_lines, result_no_page_numbers, pdf_folder
@@ -43,6 +44,12 @@ def Ilosc_Stron_PDF(plik_pdf):
     return ilosc_stron
 
 
+def clear_tmp_files():
+    for f in os.listdir(folder_tmp):
+        if os.path.isfile(os.path.join(folder_tmp, f)):
+            os.remove(folder_tmp + f)
+
+
 def main(filename):
     # create_structure()
     Ilosc_Stron_PDF(pdf_folder + filename)
@@ -51,11 +58,15 @@ def main(filename):
     # file = folder_tmp + "result.txt"
     ocr = subprocess.Popen([gs_exe, '-sDEVICE=txtwrite', '-dNOPAUSE', '-dBATCH',
                             '-sOUTPUTFILE=C:\\Users\\User\\PycharmProjects\\akret\\code\\tmp\\result.txt',
-                            pdf_folder + filename])
+                            pdf_folder + filename], shell=True, stdout=subprocess.PIPE)
+    for line in iter(ocr.stdout):
+        print(line)
+    # z = ocr.stdout.readline().decode("utf-8")
+    # output = ocr.stdout.read()
+    # print(output)
     ocr.wait()
     ocr.kill()
     ocr.poll()
-
     RemoveBlankLines()
     # if isOnline():
     #     sendbeforeemail(filename)
@@ -63,7 +74,7 @@ def main(filename):
     xlsx_f = CSV2XLSX(filename)
     # if isOnline():
     #    sendemail(filename, xlsx_f)
-    clear_tmp_files(filename)
+    clear_tmp_files()
     print(time.strftime("%H:%M:%S"))
     return xlsx_f
 

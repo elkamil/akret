@@ -12,18 +12,22 @@ H = re.compile(
 
 
 def lokalizacja(line):
-    if H.search(line):
-        res3 = H.search(line)
-        obr = res3.group(1) + res3.group(2) + " - " + res3.group(3)
-        k_obreb.append(obr)
-        m_dzialka = res3.group(5)
-        l_arkusz.append(res3.group(4))
-        G = obreby_csv[obreby_csv['Numer'] == int(res3.group(2))].Dzielnica
-        G_val = G.values
-        j_dzielnica.append(G_val)
-    else:
-        k_obreb.append('-')
-        l_arkusz.append('-')
-        j_dzielnica.append('-')
-        m_dzialka = '-'
-    return k_obreb, l_arkusz, j_dzielnica, m_dzialka
+    try:
+        if H.search(line):
+            res3 = H.search(line)
+            obr = res3.group(1) + res3.group(2) + " - " + res3.group(3)
+            k_obreb.append(obr)
+            m_dzialka = res3.group(5)
+            l_arkusz.append(res3.group(4))
+            G = obreby_csv[obreby_csv['Numer'] == int(res3.group(2))].Dzielnica
+            G_val = G.values
+            j_dzielnica.append(G_val)
+        else:
+            k_obreb.append('-')
+            l_arkusz.append('-')
+            j_dzielnica.append('-')
+            m_dzialka = '-'
+        return k_obreb, l_arkusz, j_dzielnica, m_dzialka
+    except:
+        return k_obreb, l_arkusz, j_dzielnica, m_dzialka
+
