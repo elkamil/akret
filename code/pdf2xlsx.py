@@ -60,17 +60,22 @@ def main(filename):
     Ilosc_Stron_PDF(pdf_folder + filename)
     print(time.strftime("%H:%M:%S"))
     pages = Ilosc_Stron_PDF(pdf_folder+filename)
-    gs_exe = "C:\\Program Files\\gs\\gs9.26\\bin\\gswin64c.exe"
-    # file = folder_tmp + "result.txt"
-    ocr = subprocess.Popen([gs_exe, '-sDEVICE=txtwrite', '-dNOPAUSE', '-dBATCH',
-                            '-sOUTPUTFILE=C:\\Users\\User\\PycharmProjects\\akret\\code\\tmp\\result.txt',
-                            pdf_folder + filename], shell=True, stdout=subprocess.PIPE)
+    gs_exe = "gs"
+    file = folder_tmp + "result.txt"
+    print(file)
+    linux_gscommand = ['/usr/bin/gs','-sDEVICE=txtwrite','-dNOPAUSE','-dBATCH','-sOUTPUTFILE='+file,pdf_folder+filename]
+    windows_gscommand=['C:\\Program Files\\gs\\gs9.26\\bin\\gswin64c.exe', '-sDEVICE=txtwrite','-dNOPAUSE','-dBATCH','-sOUTPUTFILE='+file,pdf_folder+filename]
+    print(gscommand)
+    #windows ocs
+    #ocr = subprocess.Popen(windows_gscommand, shell=True, stdout=subprocess.PIPE)
+    #linux orc
+    ocr = subprocess.Popen(linux_gscommand, stdout=subprocess.PIPE)
     for line in iter(ocr.stdout):
         getPageNo = re.compile('Page\s(\d+)')
         pageNo = getPageNo.search(line.decode('utf-8'))
         if pageNo:
             pageNumber = pageNo.group(1)
-            print(pageNumber)
+            # print(pageNumber)
             r.set("ocrprogress", round(100 * (int(pageNumber) / int(pages))))
     # z = ocr.stdout.readline().decode("utf-8")
     # output = ocr.stdout.read()

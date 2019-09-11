@@ -14,3 +14,5 @@ def create_structure():
         os.makedirs(pdf_folder)
     if not os.path.exists(logs_dir):
         os.makedirs(logs_dir)
+    if not os.path.exists(folder_tmp):
+        os.makedirs(folder_tmp)

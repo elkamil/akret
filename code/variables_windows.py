@@ -8,14 +8,14 @@ import os
 print(os.getcwd())
 home = os.getcwd()
 Input_file = "result.txt"
-folder = home + "/workdir/"
-logs_dir = folder+"logs/"
-static_dir = home + "/static"
-backup_folder = static_dir + "/backup/lokale_mieszkalne/"
+folder = home + "\workdir\\"
+logs_dir = folder+"logs\\"
+static_dir = home + "\static"
+backup_folder = static_dir + "\\backup\lokale_mieszkalne\\"
 code_folder = ""
-done_folder = static_dir+"/lokale_mieszkalne/"
-folder_tmp = home + "/tmp/"
-pdf_folder = folder + "pdf/"
+done_folder = static_dir+"\lokale_mieszkalne\\"
+folder_tmp = home + "\\tmp\\"
+pdf_folder = folder + "pdf\\"
 split_pdf_1 = "split1.pdf"
 split_pdf_2 = "split2.pdf"
 split_pdf_3 = "split3.pdf"
@@ -32,9 +32,9 @@ line_numbers = "Line_Numbers.txt"
 #files = [split_pdf_1, split_pdf_2, split_pdf_3, result_no_blank_lines, csv_file,
 #         wpisy, line_numbers, tmp_bmp1_file, tmp_bmp2_file, tmp_bmp3_file]
 files = [split_pdf_1, split_pdf_2, split_pdf_3, result_no_blank_lines, csv_file, wpisy, line_numbers ]
-obreby_plik = home + "/data/obreby.csv"
+obreby_plik = home + "\data\obreby.csv"
 
-xlsx_folder = static_dir + "/lokale_mieszkalne"
+xlsx_folder = static_dir + "\lokale_mieszkalne"
 
 # email variables
 email_to = 'kamil.markowiak@gmail.com'

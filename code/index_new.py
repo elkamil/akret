@@ -173,11 +173,10 @@ def progress():
 
 
 if __name__ == "__main__":
+    create_structure()
     handler = RotatingFileHandler(folder + '/logs/ee.log', maxBytes=10000, backupCount=1)
-
     formatter = logging.Formatter("[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
     handler.setFormatter(formatter)
     handler.setLevel(logging.INFO)
     app.logger.addHandler(handler)
-    create_structure()
     app.run(host='0.0.0.0', port=5000, debug=True)
