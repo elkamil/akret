@@ -137,6 +137,23 @@ redis_password = ""
 r = redis.StrictRedis(
   host=redis_host, port=redis_port, password=redis_password, decode_responses=True)
 
+@app.route('/ocrprogress')
+def ocrprogress():
+  """Get percentage progress for auto attribute process"""
+  r.set("ocrprogress", str(0))
+  def ocrprogress_stream():
+    p = int(r.get("ocrprogress"))
+    while p < 100:
+      p = int(r.get("ocrprogress"))
+      p_msg = "data:" + str(p) + "\n\n"
+      yield p_msg
+      # Client closes EventSource on 100%, gets reopened when `submit` is pressed
+      if p == 100:
+        r.set("ocrprogress", str(0))
+      time.sleep(0.5)
+
+  return Response(ocrprogress_stream(), mimetype='text/event-stream')
+
 @app.route('/progress')
 def progress():
   """Get percentage progress for auto attribute process"""
@@ -150,7 +167,7 @@ def progress():
       # Client closes EventSource on 100%, gets reopened when `submit` is pressed
       if p == 100:
         r.set("progress", str(0))
-      time.sleep(1)
+      time.sleep(0.5)
 
   return Response(progress_stream(), mimetype='text/event-stream')
 

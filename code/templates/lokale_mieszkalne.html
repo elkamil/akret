@@ -1,48 +1,73 @@
 <html>
 <title>Konwersja PDF2Excel</title>
-    <script src="{{ url_for('static', filename='js/modernizr.custom.js')}}"></script>
+<script src="{{ url_for('static', filename='js/modernizr.custom.js')}}"></script>
 
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap_new.css') }}">
-    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
-     <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
- <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
- <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap_new.css') }}">
+<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
 
-    <script>
+<script>
   function getProgress() {
-  $(".progress").css('visibility', 'visible');
+  $(".container").css('visibility', 'visible');
   $(".container-2").fadeTo("slow",0.15);
     var source = new EventSource("/progress");
     source.onmessage = function(event) {
       $('.progress-bar').css('width', event.data+'%').attr('aria-valuenow', event.data);
-      $('.progress-bar-label').text(event.data+'%');
+      $('.current-text').text(event.data+'%');
 
       // Event source closed after hitting 100%
       if(event.data == 100){
-      $('progress').hide();
+      $(".progress").fadeTo("slow",0.15);
+          $('progress').hide();
+          $('progress1').hide();
         source.close();
 
       }
     }
   }
-  $(".progress-bar").animate({
+  $(".progress-bar1").animate({
     width: "100%"
 }, 5000, function() {
     $(this).closest('.progress').fadeOut();
 });
 
+ function getOCRProgress() {
+  $(".container").css('visibility', 'visible');
+  $(".container-2").fadeTo("slow",0.15);
+    var source1 = new EventSource("/ocrprogress");
+    source1.onmessage = function(event) {
+      $('.progress-bar1').css('width', event.data+'%').attr('aria-valuenow', event.data);
+      $('.current-text1').text(event.data+'%');
 
-    </script>
+      // Event source closed after hitting 100%
+      if(event.data == 100){
+      $(".progress1").fadeTo("slow",0.15);
+      $(this).closest('.progress1').fadeOut();
+        source1.close();
+
+      }
+    }
+  }
+  $(".progress-bar1").animate({
+    width: "100%"
+}, 5000, function() {
+    $(this).closest('.progress1').fadeOut();
+});
+
+
+</script>
 <header class="masthead border-bottom border-white ">
-  <div class="container h-100">
-    <div class="row h-100 align-items-center">
-      <div class="col-12 text-center">
-          <font size="5" color="white"><h1 fontclass="font-weight-light">KONWERSJA XLSX</h1></font>
-      </div>
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <font size="5" color="white"><h1 fontclass="font-weight-light">KONWERSJA XLSX</h1></font>
+            </div>
+        </div>
     </div>
-  </div>
 </header>
 
 <div class="container-2 h-100 w-100 float-left">
@@ -50,7 +75,8 @@
         <div class="col-md-4 ">
             <form action="" method=post enctype=multipart/form-data>
                 <p><input class="btn btn-primary btn-lg" type=file name=file size="80" accept=".pdf"></p>
-                <p><input class="btn btn-primary btn-lg" type=submit onclick="$('#loadingDiv').show();getProgress()"
+                <p><input class="btn btn-primary btn-lg" type=submit
+                          onclick="$('#loadingDiv').show();getProgress();getOCRProgress()"
                           value="Konwertuj na XLSX"></p>
             </form>
             <form action="/delete" method="post">
@@ -63,30 +89,41 @@
             <p><a class="btn btn-primary btn-lg" href="{{ url_for('index') }}">WRÓĆ</a></p>
             <div class="verticalLine"></div>
         </div>
-    <div class="col-md-4 offset-md-4">
+        <div class="col-md-4 offset-md-4">
 
-        <!--section class="color-9"-->
-        {%- for item in tree %}
-        <p><a class="btn btn-primary btn-lg" href="/static/lokale_mieszkalne/{{ item }}">{{ item }}</a></p>
-        {%- endfor %}
+            <!--section class="color-9"-->
+            {%- for item in tree %}
+            <p><a class="btn btn-primary btn-lg" href="/static/lokale_mieszkalne/{{ item }}">{{ item }}</a></p>
+            {%- endfor %}
 
-    </div>
+        </div>
 
-
-    </div>
 
     </div>
-<div class="container center-container">
-     <div class="row" >
-<div class="col">
-            <div class="progress" style="visibility: hidden; width:50%;height: 50px;">
+
+</div>
+<div class="container center-container" style="visibility:hidden;">
+    <div class="row">
+        <div class="col-lg-12 col-md-auto border border-white">
+            <div class="progress1" style="width:50%;height: 50px;">
+                <!--div class="progress" style="visibility: hidden; width:50%;height: 50px;"-->
+                <div class="progress-bar1 progress-bar-striped1 active progress-bar-animated1"
+                     role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-hidden="true"
+                     style="float:center; width:0%;height:50px;"></div>
+                <span class="current-text1">0%</span>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-auto border border-white">
+            <div class="progress" style="width:50%;height: 50px;">
+                <!--div class="progress" style="visibility: hidden; width:50%;height: 50px;"-->
                 <div class="progress-bar progress-bar-striped active progress-bar-animated"
                      role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                     style="float:center; width:0%;height:50px;"/>
-                <span class="progress-bar-label">0%</span>
+                     style="float:center; width:0%;height:50px;"></div>
+                <span class="current-text">0%</span>
             </div>
-    </div>
+        </div>
 
+    </div>
 </div>
 </html>
 

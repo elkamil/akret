@@ -9,12 +9,17 @@ import re
 import subprocess
 # -*- coding: utf-8 -*-
 import time
+import redis
 
 from PyPDF2 import PdfFileReader
 
 from csv2xlsx import CSV2XLSX
 from ocr2csv import OCR2CSV
 from variables import folder_tmp, Input_file, result_no_blank_lines, result_no_page_numbers, pdf_folder
+redis_host = "localhost"
+redis_port = 6379
+redis_password = ""
+r = redis.StrictRedis(  host=redis_host, port=redis_port, password=redis_password, decode_responses=True)
 
 
 def RemoveBlankLines():
@@ -54,13 +59,19 @@ def main(filename):
     # create_structure()
     Ilosc_Stron_PDF(pdf_folder + filename)
     print(time.strftime("%H:%M:%S"))
+    pages = Ilosc_Stron_PDF(pdf_folder+filename)
     gs_exe = "C:\\Program Files\\gs\\gs9.26\\bin\\gswin64c.exe"
     # file = folder_tmp + "result.txt"
     ocr = subprocess.Popen([gs_exe, '-sDEVICE=txtwrite', '-dNOPAUSE', '-dBATCH',
                             '-sOUTPUTFILE=C:\\Users\\User\\PycharmProjects\\akret\\code\\tmp\\result.txt',
                             pdf_folder + filename], shell=True, stdout=subprocess.PIPE)
     for line in iter(ocr.stdout):
-        print(line)
+        getPageNo = re.compile('Page\s(\d+)')
+        pageNo = getPageNo.search(line.decode('utf-8'))
+        if pageNo:
+            pageNumber = pageNo.group(1)
+            print(pageNumber)
+            r.set("ocrprogress", round(100 * (int(pageNumber) / int(pages))))
     # z = ocr.stdout.readline().decode("utf-8")
     # output = ocr.stdout.read()
     # print(output)
